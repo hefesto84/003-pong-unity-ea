@@ -1,2 +1,1 @@
-# pong
-Pong
+# Pong
