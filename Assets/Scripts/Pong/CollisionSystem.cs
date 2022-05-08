@@ -6,7 +6,7 @@ namespace Pong
     {
         [SerializeField] private PlayerComponent paddle1;
         [SerializeField] private PlayerComponent paddle2;
-        [SerializeField] private BallComponent ball;
+        [SerializeField] private BallView ball;
 
         private void Update()
         {
