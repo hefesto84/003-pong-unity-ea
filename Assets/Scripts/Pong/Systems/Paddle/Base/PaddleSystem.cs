@@ -8,7 +8,7 @@ namespace Pong.Systems.Paddle.Base
     public abstract class PaddleSystem
     {
         public PaddleView View { get; private set; }
-        public PaddleType PaddleType { get; private set; }
+        public PlayerType PlayerType { get; private set; }
 
         protected readonly BallSystem BallSystem;
         private readonly ConfigService _configService;
@@ -18,14 +18,14 @@ namespace Pong.Systems.Paddle.Base
         protected readonly float PaddleMovementSpeed;
         
 
-        protected PaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PaddleType paddleType)
+        protected PaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PlayerType playerType)
         {
             _configService = configService;
             _screenService = screenService;
             
             BallSystem = ballSystem;
 
-            PaddleType = paddleType;
+            PlayerType = playerType;
             
             PaddleMovementSpeed = configService.PongConfig.paddleMovementSpeed;
 
@@ -39,7 +39,7 @@ namespace Pong.Systems.Paddle.Base
         {
             if (BallSystem.View.Bounds.Intersects(View.Bounds))
             {
-                BallSystem.IsCollided(PaddleType);
+                BallSystem.IsCollided(PlayerType);
             }
         }
 
@@ -47,7 +47,7 @@ namespace Pong.Systems.Paddle.Base
         {
             if (View == null) View = new GameObject("Paddle").AddComponent<PaddleView>();
             
-            View.Init(_configService, _screenService, PaddleType);
+            View.Init(_configService, _screenService, PlayerType);
         }
 
         /*

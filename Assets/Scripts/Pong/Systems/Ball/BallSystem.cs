@@ -71,11 +71,11 @@ namespace Pong.Systems.Ball
             _view.UpdateView(cp);
         }
 
-        public void IsCollided(PaddleType paddleType)
+        public void IsCollided(PlayerType playerType)
         {
-            switch (paddleType)
+            switch (playerType)
             {
-                case PaddleType.Player:
+                case PlayerType.Player:
                     _dx *= -1;
                     break;
                 default:

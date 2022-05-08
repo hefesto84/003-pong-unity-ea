@@ -14,9 +14,9 @@ namespace Pong.Managers
     {
         private State _currentState;
 
-        public readonly GameOverState GameOverState;
+        public GameOverState GameOverState { get; private set; }
         public InitGameState InitGameState { get; private set; }
-        public GameState GameState { get; set; }
+        public GameState GameState { get; private set; }
 
         private bool IsReady { get; set; }
 
@@ -63,12 +63,12 @@ namespace Pong.Managers
 
         private void SetDependencies()
         {
-            Debug.Log("Setting dependencies...");
-            
             InitGameState = new InitGameState(this);
             
             GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, this);
 
+            GameOverState = new GameOverState(this);
+            
             _currentState = InitGameState;
             
             IsReady = true;

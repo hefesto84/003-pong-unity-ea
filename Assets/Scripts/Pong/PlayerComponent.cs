@@ -9,7 +9,7 @@ namespace Pong
         [Range(1, 10)] [SerializeField] private int movementSpeed = 3;
 
         [SerializeField] private BallView ball;
-        [SerializeField] private PaddleType paddleType;
+        [SerializeField] private PlayerType playerType;
         
         private Vector2 _direction;
 
@@ -45,7 +45,7 @@ namespace Pong
         private void SetInitialPosition()
         {
             _size = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-            transform.position = new Vector3(paddleType == PaddleType.Player ? -_size.x+1 : _size.x-1, 0, 0);
+            transform.position = new Vector3(playerType == PlayerType.Player ? -_size.x+1 : _size.x-1, 0, 0);
         }
 
         private bool _isColliding = false;

@@ -20,11 +20,11 @@ namespace Pong.Systems.Collision
         {
             if (_ballSystem.View.Bounds.Intersects(_playerPaddleSystem.View.Bounds))
             {
-                _ballSystem.IsCollided(_playerPaddleSystem.PaddleType);
+                _ballSystem.IsCollided(_playerPaddleSystem.PlayerType);
             }
             else if (_ballSystem.View.Bounds.Intersects(_opponentPaddleSystem.View.Bounds))
             {
-                _ballSystem.IsCollided(_opponentPaddleSystem.PaddleType);
+                _ballSystem.IsCollided(_opponentPaddleSystem.PlayerType);
             }
         }
     }

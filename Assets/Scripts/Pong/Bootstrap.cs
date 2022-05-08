@@ -25,6 +25,7 @@ namespace Pong
 
         private ConfigService _configService;
         private ScreenService _screenService;
+        private ScoreService _scoreService;
 
         private void Start()
         {
@@ -52,9 +53,11 @@ namespace Pong
         {
             _configService = new GameObject("ConfigService").AddComponent<ConfigService>();
             _screenService = new GameObject("ScreenService").AddComponent<ScreenService>();
+            _scoreService = new GameObject("ScoreService").AddComponent<ScoreService>();
             
             _configService.Init(pongConfig);
             _screenService.Init(Camera.main);
+            _scoreService.Init();
             
             _configService.transform.SetParent(transform);
             _screenService.transform.SetParent(transform);
@@ -66,7 +69,7 @@ namespace Pong
             _playerPaddleSystem = new PlayerPaddleSystem(_configService, _screenService, _ballSystem);
             _opponentPaddleSystem = new OpponentPaddleSystem(_configService, _screenService, _ballSystem);
             _collisionSystem = new CollisionSystem(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem);
-            _gameSystem = new GameSystem(_configService, _screenService, _ballSystem);
+            _gameSystem = new GameSystem(_configService, _screenService, _scoreService, _ballSystem);
         }
 
         private void OnDestroy()

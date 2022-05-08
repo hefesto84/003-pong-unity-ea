@@ -1,6 +1,6 @@
 ﻿namespace Pong
 {
-    public enum PaddleType
+    public enum PlayerType
     {
         Player,
         Opponent

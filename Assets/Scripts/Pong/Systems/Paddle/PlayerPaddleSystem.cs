@@ -7,7 +7,7 @@ namespace Pong.Systems.Paddle
 {
     public class PlayerPaddleSystem : PaddleSystem
     {
-        public PlayerPaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem) : base(configService, screenService, ballSystem, PaddleType.Player) { }
+        public PlayerPaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem) : base(configService, screenService, ballSystem, PlayerType.Player) { }
 
         public override void Update()
         {

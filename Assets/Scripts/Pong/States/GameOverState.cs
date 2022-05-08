@@ -1,5 +1,6 @@
 ﻿using Pong.Managers;
 using Pong.States.Base;
+using UnityEngine;
 
 namespace Pong.States
 {
@@ -9,7 +10,7 @@ namespace Pong.States
 
         public override void DoState()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("GAME OVER");
         }
     }
 }

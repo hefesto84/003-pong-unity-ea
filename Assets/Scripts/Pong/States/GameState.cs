@@ -66,16 +66,30 @@ namespace Pong.States
 
             if (IsPaused) return;
             
-            
+            UpdateSystems();
+
+            CheckMatchConditions();
+        }
+
+        private void UpdateSystems()
+        {
             _ballSystem.Update();
-            
+
             _playerPaddleSystem.Update();
             _opponentPaddleSystem.Update();
-            
+
             _collisionSystem.Update();
-            
+
             _gameSystem.Update();
-            
+        }
+        
+        private void CheckMatchConditions()
+        {
+            if (_gameSystem.IsGameOver)
+            {
+                Debug.Log("BYE");
+                GameManager.SetState(GameManager.GameOverState);
+            }
         }
 
         private void InitDependencies()

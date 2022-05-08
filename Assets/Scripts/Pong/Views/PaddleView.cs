@@ -7,15 +7,15 @@ namespace Pong.Views
     public class PaddleView : View
     {
         private ScreenService _screenService;
-        private PaddleType _paddleType;
+        private PlayerType _playerType;
 
-        public void Init(ConfigService configService, ScreenService screenService, PaddleType paddleType)
+        public void Init(ConfigService configService, ScreenService screenService, PlayerType playerType)
         {
             _screenService = screenService;
             _screenService.OnScreenResized += OnScreenResized;
 
-            _paddleType = paddleType;
-            SpriteRenderer.sprite = _paddleType == PaddleType.Player ? configService.PongConfig.playerPaddleSprite : configService.PongConfig.opponentPlayerSprite;
+            _playerType = playerType;
+            SpriteRenderer.sprite = _playerType == PlayerType.Player ? configService.PongConfig.playerPaddleSprite : configService.PongConfig.opponentPlayerSprite;
             
             OnScreenResized(_screenService.CurrentSize);
         }
@@ -28,7 +28,7 @@ namespace Pong.Views
         private void OnScreenResized(Vector3 screenSize)
         {
             var pt = transform.position;
-            pt.x = _paddleType == PaddleType.Player ? -screenSize.x + Bounds.size.x*2 : screenSize.x - Bounds.size.x*2;
+            pt.x = _playerType == PlayerType.Player ? -screenSize.x + Bounds.size.x*2 : screenSize.x - Bounds.size.x*2;
             UpdateView(pt);
         }
 
