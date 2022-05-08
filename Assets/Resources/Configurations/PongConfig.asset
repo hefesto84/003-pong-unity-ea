@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PongConfig
   m_EditorClassIdentifier: 
   paddleMovementSpeed: 3
-  initialBallSpeed: 3
+  initialBallSpeed: 5
   victoryPoints: 3
   paddleSprite: {fileID: 0}
-  ballSprite: {fileID: 0}
+  ballSprite: {fileID: 21300000, guid: 07579ea6af5429649a1113911ba933a3, type: 3}

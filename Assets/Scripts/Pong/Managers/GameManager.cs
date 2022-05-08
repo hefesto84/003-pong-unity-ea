@@ -1,4 +1,5 @@
-﻿using Pong.Configurations;
+﻿using System;
+using Pong.Configurations;
 using Pong.FSM.States;
 using Pong.FSM.States.Base;
 using Pong.Services;
@@ -18,11 +19,17 @@ namespace Pong.Systems
 
         private ConfigService _configService;
         private ScreenService _screenService;
+
+        private LimitsSystem _limitsSystem;
+        private BallSystem _ballSystem;
         
-        public void Init(ConfigService configService, ScreenService screenService)
+        public void Init(ConfigService configService, ScreenService screenService, LimitsSystem limitsSystem, BallSystem ballSystem)
         {
             _configService = configService;
             _screenService = screenService;
+
+            _limitsSystem = limitsSystem;
+            _ballSystem = ballSystem;
             
             SetDependencies();
         }
@@ -44,7 +51,8 @@ namespace Pong.Systems
             Debug.Log("Setting dependencies...");
             
             InitGameState = new InitGameState(this);
-            GameState = new GameState(_configService, _screenService, this);
+            
+            GameState = new GameState(_configService, _screenService, _ballSystem, this);
 
             _currentState = InitGameState;
             

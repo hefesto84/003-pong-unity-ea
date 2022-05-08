@@ -8,8 +8,9 @@ namespace Pong.Services
         private Camera _camera;
         private int _currentScreenWidth = 0;
         private int _currentScreenHeight = 0;
+        public Vector3 CurrentSize { get; private set; }
         
-        public Action OnScreenResized { get; set; }
+        public Action<Vector3> OnScreenResized { get; set; }
         
         public void Init(Camera cam)
         {
@@ -17,6 +18,8 @@ namespace Pong.Services
             _currentScreenWidth = Screen.width;
             
             _camera = cam;
+            
+            UpdateCurrentScreenSize();
         }
 
         private void Update()
@@ -26,7 +29,14 @@ namespace Pong.Services
             _currentScreenWidth = Screen.width;
             _currentScreenHeight = Screen.height;
             
-            OnScreenResized?.Invoke();
+            UpdateCurrentScreenSize();
+            
+            OnScreenResized?.Invoke(CurrentSize);
+        }
+
+        private void UpdateCurrentScreenSize()
+        {
+            CurrentSize = _camera.ScreenToWorldPoint(new Vector3(_currentScreenWidth, _currentScreenHeight));
         }
     }
 }

@@ -1,77 +1,40 @@
 using System;
+using Pong.Configurations;
 using UnityEngine;
 using UnityEngine.Windows.WebCam;
 
 namespace Pong
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class BallComponent : MonoBehaviour
     {
-        [Range(0,10f)]
-        [SerializeField]
-        private float _dx = 5f;
-        [Range(0,10f)]
-        [SerializeField]
-        private float _dy = 5f;
-
         private Vector3 _screenSize;
+        private SpriteRenderer _spriteRenderer;
         
         private void Awake()
         {
-            
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             _screenSize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         }
 
-        private void Update()
+        public void Init(PongConfig pongConfig)
         {
-            var dt = Time.deltaTime;
-            var ct = transform;
-            var cp = ct.position;
-            
-            cp.x += _dx * dt;
-            cp.y += _dy * dt;
-            
-            if (cp.y > _screenSize.y)
-            {
-                cp.y = _screenSize.y;
-                _dy *= -1;
-            }
-
-            if (cp.y < -_screenSize.y)
-            {
-                cp.y = -_screenSize.y;
-                _dy *= -1;
-            }
-
-            if (cp.x > _screenSize.x)
-            {
-                cp.x = _screenSize.x;
-                _dx *= -1;
-            }
-
-            if (cp.x < -_screenSize.x)
-            {
-                cp.x = -_screenSize.x;
-                _dx *= -1;
-            }
-            
-            
-            
-            ct.position = cp;
+            _spriteRenderer.sprite = pongConfig.ballSprite;
         }
-
         
         public void Collided(PaddleType paddleType)
         {
+            /*
             Debug.Log("COLLIDES!"+Time.deltaTime);
             switch (paddleType)
             {
                 case PaddleType.Player:
-                    _dx *= -1;
+                    dx *= -1;
                     break;
                 default:
-                    _dx *= -1;
+                    dx *= -1;
                     break;
-            }
+            }*/
         }
         
     }

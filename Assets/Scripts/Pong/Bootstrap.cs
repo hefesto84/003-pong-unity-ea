@@ -12,6 +12,7 @@ namespace Pong
 
         private GameManager _gameManager;
         private LimitsSystem _limitsSystem;
+        private BallSystem _ballSystem;
 
         private ConfigService _configService;
         private ScreenService _screenService;
@@ -28,7 +29,7 @@ namespace Pong
             InitSystems();
             
             // Initialisation of the GameManager
-            _gameManager.Init(_configService, _screenService);
+            _gameManager.Init(_configService, _screenService, _limitsSystem, _ballSystem);
         }
 
         private void InitServices()
@@ -46,7 +47,13 @@ namespace Pong
         private void InitSystems()
         {
             _limitsSystem = new LimitsSystem(_screenService);
+            _ballSystem = new BallSystem(_configService, _screenService);
             _limitsSystem.Init();
+        }
+
+        private void OnDestroy()
+        {
+            _limitsSystem = null;
         }
     }
 }

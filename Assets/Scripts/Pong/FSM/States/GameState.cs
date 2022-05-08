@@ -8,14 +8,16 @@ namespace Pong.FSM.States
 {
     public class GameState : State
     {
+        private BallSystem _ballSystem;
         private readonly PongConfig _pongConfig;
         
         private bool IsPlaying { get; set; }
         private bool IsPaused { get; set; }
 
-        public GameState(ConfigService configService, ScreenService screenService, GameManager gameManager) : base(gameManager)
+        public GameState(ConfigService configService, ScreenService screenService, BallSystem ballSystem, GameManager gameManager) : base(gameManager)
         {
             _pongConfig = configService.PongConfig;
+            _ballSystem = ballSystem;
         }
         
         public override void DoState()
@@ -27,6 +29,7 @@ namespace Pong.FSM.States
                     return;
                 case false:
                     ShowDependencies();
+                    InitDependencies();
                     IsPlaying = true;
                     IsPaused = false;
                     break;
@@ -40,10 +43,15 @@ namespace Pong.FSM.States
                 IsPaused = !IsPaused;
             }
 
-            if (!IsPaused)
-            {
-                Debug.Log("Playing...");
-            }
+            if (IsPaused) return;
+            
+            _ballSystem.Update();
+            
+        }
+
+        private void InitDependencies()
+        {
+            _ballSystem.Reset();     
         }
         
         private void ShowDependencies()

@@ -6,10 +6,16 @@ namespace Pong.Systems
     public class LimitsSystem
     {
         private readonly ScreenService _screenService;
+        private Vector3 _screenSize;
         
         public LimitsSystem(ScreenService screenService)
         {
             _screenService = screenService;
+        }
+        
+        ~LimitsSystem()
+        {
+            _screenService.OnScreenResized -= OnScreenResized;
         }
 
         public void Init()
@@ -17,18 +23,19 @@ namespace Pong.Systems
             RegisterCallbacks();
         }
 
-        ~LimitsSystem()
+        public void CheckLimits(BallComponent ballComponent)
         {
-            _screenService.OnScreenResized -= OnScreenResized;
+            
         }
-
+        
         private void RegisterCallbacks()
         {
             _screenService.OnScreenResized += OnScreenResized;
         }
 
-        private void OnScreenResized()
+        private void OnScreenResized(Vector3 screenSize)
         {
+            _screenSize = screenSize;
             Debug.Log("Screen resized detected in limits.");
         }
     }
