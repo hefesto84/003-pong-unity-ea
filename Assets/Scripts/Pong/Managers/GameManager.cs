@@ -3,6 +3,7 @@ using Pong.FSM.States.Base;
 using Pong.Services;
 using Pong.Systems;
 using Pong.Systems.Ball;
+using Pong.Systems.Collision;
 using Pong.Systems.Paddle.Base;
 using UnityEngine;
 
@@ -24,8 +25,14 @@ namespace Pong.Managers
         private BallSystem _ballSystem;
         private PaddleSystem _playerPaddleSystem;
         private PaddleSystem _opponentPaddleSystem;
+        private CollisionSystem _collisionSystem;
         
-        public void Init(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PaddleSystem playerPaddleSystem, PaddleSystem opponentPaddleSystem )
+        public void Init(ConfigService configService, 
+            ScreenService screenService, 
+            BallSystem ballSystem, 
+            PaddleSystem playerPaddleSystem, 
+            PaddleSystem opponentPaddleSystem,
+            CollisionSystem collisionSystem)
         {
             _configService = configService;
             _screenService = screenService;
@@ -33,6 +40,7 @@ namespace Pong.Managers
             _ballSystem = ballSystem;
             _playerPaddleSystem = playerPaddleSystem;
             _opponentPaddleSystem = opponentPaddleSystem;
+            _collisionSystem = collisionSystem;
             
             SetDependencies();
         }
@@ -55,7 +63,7 @@ namespace Pong.Managers
             
             InitGameState = new InitGameState(this);
             
-            GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, this);
+            GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, this);
 
             _currentState = InitGameState;
             

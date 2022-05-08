@@ -2,8 +2,8 @@
 using Pong.FSM.States.Base;
 using Pong.Managers;
 using Pong.Services;
-using Pong.Systems;
 using Pong.Systems.Ball;
+using Pong.Systems.Collision;
 using Pong.Systems.Paddle;
 using Pong.Systems.Paddle.Base;
 using UnityEngine;
@@ -15,6 +15,7 @@ namespace Pong.FSM.States
         private readonly BallSystem _ballSystem;
         private readonly PlayerPaddleSystem _playerPaddleSystem;
         private readonly OpponentPaddleSystem _opponentPaddleSystem;
+        private readonly CollisionSystem _collisionSystem;
         private readonly PongConfig _pongConfig;
         
         private bool IsPlaying { get; set; }
@@ -25,13 +26,15 @@ namespace Pong.FSM.States
             ScreenService screenService, 
             BallSystem ballSystem, 
             PaddleSystem playerPaddleSystem,
-            PaddleSystem opponentPaddleSystem, 
+            PaddleSystem opponentPaddleSystem,
+            CollisionSystem collisionSystem,
             GameManager gameManager) : base(gameManager)
         {
             _pongConfig = configService.PongConfig;
             _ballSystem = ballSystem;
             _playerPaddleSystem = playerPaddleSystem as PlayerPaddleSystem;
             _opponentPaddleSystem = opponentPaddleSystem as OpponentPaddleSystem;
+            _collisionSystem = collisionSystem;
         }
         
         public override void DoState()
@@ -59,10 +62,17 @@ namespace Pong.FSM.States
 
             if (IsPaused) return;
             
+            
             _ballSystem.Update();
             
-            _playerPaddleSystem.Update(_ballSystem.Bounds);
-            _opponentPaddleSystem.Update(_ballSystem.Bounds);
+            _playerPaddleSystem.Update();
+            _opponentPaddleSystem.Update();
+            
+            _collisionSystem.Update();
+            
+            //_playerPaddleSystem.CheckCollision();
+            //_opponentPaddleSystem.CheckCollision();
+            
         }
 
         private void InitDependencies()

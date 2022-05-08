@@ -1,24 +1,16 @@
 using Pong.Configurations;
+using Pong.Views.Base;
 using UnityEngine;
 
 namespace Pong.Views
 {
-    [RequireComponent(typeof(SpriteRenderer))]
-    public class BallView : MonoBehaviour
+    public class BallView : View
     {
         private Vector3 _screenSize;
-        private SpriteRenderer _spriteRenderer;
-        
-        public Bounds Bounds => _spriteRenderer.bounds;
-
-        private void Awake()
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
+ 
         public void Init(PongConfig pongConfig)
         {
-            _spriteRenderer.sprite = pongConfig.ballSprite;
+            SpriteRenderer.sprite = pongConfig.ballSprite;
         }
 
         public void UpdateView(Vector3 position)

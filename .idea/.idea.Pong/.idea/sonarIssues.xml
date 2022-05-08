@@ -148,6 +148,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/Collision/CollisionSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/CollisionSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/GameManager.cs">
           <value>
             <set />
@@ -193,12 +203,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Views/Base/View.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Views/PaddleView.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Views/PlayerView.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Views/View.cs">
           <value>
             <set />
           </value>

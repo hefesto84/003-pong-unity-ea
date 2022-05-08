@@ -1,5 +1,6 @@
 ﻿using Pong.Services;
 using Pong.Views;
+using Pong.Views.Base;
 using UnityEngine;
 
 namespace Pong.Systems.Ball
@@ -9,14 +10,14 @@ namespace Pong.Systems.Ball
     {
         private readonly ConfigService _configService;
         private readonly ScreenService _screenService;
-        private BallView _ball;
+        private BallView _view;
         private Vector3 _screenSize;
 
         private float _dx = 8f;
         private float _dy = 8f;
         
-        public Bounds Bounds => _ball.Bounds;
-        
+        public View View => _view;
+
         public BallSystem(ConfigService configService, ScreenService screenService)
         {
             _configService = configService;
@@ -41,15 +42,15 @@ namespace Pong.Systems.Ball
 
         private void SetupBallView()
         {
-            if (_ball == null) _ball = new GameObject("Ball").AddComponent<BallView>();
-            _ball.transform.position = Vector3.zero;
-            _ball.Init(_configService.PongConfig);
+            if (_view == null) _view = new GameObject("Ball").AddComponent<BallView>();
+            _view.transform.position = Vector3.zero;
+            _view.Init(_configService.PongConfig);
         }
         
         public void Update()
         {
             var dt = Time.deltaTime;
-            var ct = _ball.transform;
+            var ct = _view.transform;
             var cp = ct.position;
             
             cp.x += _dx * dt;
@@ -79,9 +80,14 @@ namespace Pong.Systems.Ball
                 _dx *= -1;
             }
 
-            _ball.UpdateView(cp);
+            _view.UpdateView(cp);
         }
 
+        public void IsCollided(PaddleType paddleType)
+        {
+            Debug.Log("Ball has collided with: "+paddleType);    
+        }
+        
         private void OnScreenResized(Vector3 screenSize)
         {
             _screenSize = screenSize;

@@ -1,4 +1,5 @@
 ﻿using Pong.Services;
+using Pong.Systems.Ball;
 using Pong.Systems.Paddle.Base;
 using UnityEngine;
 
@@ -6,11 +7,11 @@ namespace Pong.Systems.Paddle
 {
     public class OpponentPaddleSystem : PaddleSystem
     {
-        public OpponentPaddleSystem(ConfigService configService, ScreenService screenService) : base(configService, screenService, PaddleType.Opponent) { }
+        public OpponentPaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem) : base(configService, screenService, ballSystem, PaddleType.Opponent) { }
 
-        public override void Update(Bounds ballBounds)
+        public override void Update()
         {
-            var ct = PaddleView.transform.position;
+            var ct = View.transform.position;
             var inc = Input.GetAxis("Vertical");
 
             var np = inc * Time.deltaTime * PaddleMovementSpeed;
@@ -19,12 +20,7 @@ namespace Pong.Systems.Paddle
 
             if (ct.y > ScreenSize.y || ct.y < -ScreenSize.y) return;
 
-            PaddleView.UpdateView(ct);
-            
-            if(IsCollision(ballBounds))
-            {
-                Debug.Log($"Collision: {GetType()}");
-            }
+            View.UpdateView(ct);
         }
 
         public override void Reset()
