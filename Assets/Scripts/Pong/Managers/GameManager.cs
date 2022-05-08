@@ -1,6 +1,6 @@
-﻿using Pong.FSM.States;
-using Pong.FSM.States.Base;
-using Pong.Services;
+﻿using Pong.Services;
+using Pong.States;
+using Pong.States.Base;
 using Pong.Systems;
 using Pong.Systems.Ball;
 using Pong.Systems.Collision;

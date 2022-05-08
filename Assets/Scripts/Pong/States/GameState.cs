@@ -1,14 +1,14 @@
 ﻿using Pong.Configurations;
-using Pong.FSM.States.Base;
 using Pong.Managers;
 using Pong.Services;
+using Pong.States.Base;
 using Pong.Systems.Ball;
 using Pong.Systems.Collision;
 using Pong.Systems.Paddle;
 using Pong.Systems.Paddle.Base;
 using UnityEngine;
 
-namespace Pong.FSM.States
+namespace Pong.States
 {
     public class GameState : State
     {

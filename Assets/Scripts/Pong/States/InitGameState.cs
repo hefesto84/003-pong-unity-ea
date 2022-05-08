@@ -1,8 +1,7 @@
-﻿using Pong.FSM.States.Base;
-using Pong.Managers;
-using Pong.Systems;
+﻿using Pong.Managers;
+using Pong.States.Base;
 
-namespace Pong.FSM.States
+namespace Pong.States
 {
     public class InitGameState : State
     {

@@ -1,7 +1,6 @@
 ﻿using Pong.Managers;
-using Pong.Systems;
 
-namespace Pong.FSM.States.Base
+namespace Pong.States.Base
 {
     /*
     public abstract class State
