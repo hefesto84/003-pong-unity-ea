@@ -5,14 +5,14 @@ namespace Pong.FSM.States
 {
     public class InitGameState : State
     {
-        public InitGameState(GameSystem gameSystem) : base(gameSystem)
+        public InitGameState(GameManager gameManager) : base(gameManager)
         {
             
         }
         
         public override void DoState()
         {
-            GameSystem.SetState(GameSystem.GameState);
+            GameManager.SetState(GameManager.GameState);
         }
     }
 }

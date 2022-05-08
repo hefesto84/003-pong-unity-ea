@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Pong.Systems
 {
-    public class GameSystem : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         private State _currentState;
 

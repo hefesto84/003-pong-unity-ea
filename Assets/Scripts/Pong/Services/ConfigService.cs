@@ -1,12 +1,13 @@
 ﻿using Pong.Configurations;
+using UnityEngine;
 
 namespace Pong.Services
 {
-    public class ConfigService
+    public class ConfigService : MonoBehaviour
     {
-        public PongConfig PongConfig { get; }
+        public PongConfig PongConfig { get; private set; }
 
-        public ConfigService(PongConfig pongConfig)
+        public void Init(PongConfig pongConfig)
         {
             PongConfig = pongConfig;
         }

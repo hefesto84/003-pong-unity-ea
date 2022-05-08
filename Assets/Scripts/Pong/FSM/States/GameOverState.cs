@@ -5,7 +5,7 @@ namespace Pong.FSM.States
 {
     public class GameOverState : State
     {
-        public GameOverState(GameSystem gameSystem) : base(gameSystem) { }
+        public GameOverState(GameManager gameManager) : base(gameManager) { }
 
         public override void DoState()
         {

@@ -13,7 +13,7 @@ namespace Pong.FSM.States
         private bool IsPlaying { get; set; }
         private bool IsPaused { get; set; }
 
-        public GameState(ConfigService configService, ScreenService screenService, GameSystem gameSystem) : base(gameSystem)
+        public GameState(ConfigService configService, ScreenService screenService, GameManager gameManager) : base(gameManager)
         {
             _pongConfig = configService.PongConfig;
         }

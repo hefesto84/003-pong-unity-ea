@@ -10,22 +10,43 @@ namespace Pong
     {
         [SerializeField] private PongConfig pongConfig;
 
-        private GameSystem _gameSystem;
+        private GameManager _gameManager;
+        private LimitsSystem _limitsSystem;
 
         private ConfigService _configService;
         private ScreenService _screenService;
-        
+
         private void Start()
         {
-            _gameSystem = new GameObject("GameSystem").AddComponent<GameSystem>();
-            _gameSystem.transform.position = Vector3.zero;
+            _gameManager = new GameObject("GameManager").AddComponent<GameManager>();
+            _gameManager.transform.SetParent(transform);
             
             // Initialisation of the services
-            _configService = new ConfigService(pongConfig);
-            _screenService = new ScreenService(Camera.main);
+            InitServices();
             
-            // Initialisation of the GameSystem
-            _gameSystem.Init(_configService, _screenService);
+            // Initialisation of the systems
+            InitSystems();
+            
+            // Initialisation of the GameManager
+            _gameManager.Init(_configService, _screenService);
+        }
+
+        private void InitServices()
+        {
+            _configService = new GameObject("ConfigService").AddComponent<ConfigService>();
+            _screenService = new GameObject("ScreenService").AddComponent<ScreenService>();
+            
+            _configService.Init(pongConfig);
+            _screenService.Init(Camera.main);
+            
+            _configService.transform.SetParent(transform);
+            _screenService.transform.SetParent(transform);
+        }
+
+        private void InitSystems()
+        {
+            _limitsSystem = new LimitsSystem(_screenService);
+            _limitsSystem.Init();
         }
     }
 }

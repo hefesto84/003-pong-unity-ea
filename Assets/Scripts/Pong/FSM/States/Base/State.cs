@@ -22,11 +22,11 @@ namespace Pong.FSM.States.Base
     }*/
     public abstract class State
     {
-        protected GameSystem GameSystem;
+        protected GameManager GameManager;
         
-        protected State(GameSystem gameSystem)
+        protected State(GameManager gameManager)
         {
-            GameSystem = gameSystem;
+            GameManager = gameManager;
         }
         
         public abstract void DoState();
