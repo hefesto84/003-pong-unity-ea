@@ -10,7 +10,18 @@ namespace Pong.States
 
         public override void DoState()
         {
-            Debug.Log("GAME OVER");
+            //Debug.Log("GAME OVER");
+            
+            //ProcessState();
+            GameManager.SetState(GameManager.GameState);
+        }
+
+        private void ProcessState()
+        {
+            if (Input.GetKeyUp(KeyCode.P))
+            {
+                GameManager.SetState(GameManager.GameState);
+            }
         }
     }
 }

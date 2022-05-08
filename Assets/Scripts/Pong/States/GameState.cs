@@ -89,6 +89,8 @@ namespace Pong.States
             {
                 Debug.Log("BYE");
                 GameManager.SetState(GameManager.GameOverState);
+                IsPaused = false;
+                IsPlaying = false;
             }
         }
 

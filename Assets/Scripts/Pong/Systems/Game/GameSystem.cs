@@ -35,8 +35,7 @@ namespace Pong.Systems.Game
 
             _currentScore = new Dictionary<PlayerType, int>();
             
-            _currentScore[PlayerType.Player] = 0;
-            _currentScore[PlayerType.Opponent] = 0;
+            ResetScore();
 
             _pongConfig = _configService.PongConfig;
         }
@@ -49,6 +48,7 @@ namespace Pong.Systems.Game
         public void Reset()
         {
             _screenSize = _screenService.CurrentSize;
+            ResetScore();
         }
 
         public void Update()
@@ -65,6 +65,12 @@ namespace Pong.Systems.Game
 
         }
 
+        private void ResetScore()
+        {
+            _currentScore[PlayerType.Player] = 0;
+            _currentScore[PlayerType.Opponent] = 0;
+        }
+        
         private void OnScreenResized(Vector3 screenSize)
         {
             _screenSize = screenSize;
