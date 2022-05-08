@@ -55,7 +55,7 @@ namespace Pong.Systems.Ball
             
             cp.x += _dx * dt;
             cp.y += _dy * dt;
-
+            
             if (cp.y > _screenSize.y)
             {
                 cp.y = _screenSize.y;
@@ -67,19 +67,7 @@ namespace Pong.Systems.Ball
                 cp.y = -_screenSize.y;
                 _dy *= -1;
             }
-
-            if (cp.x > _screenSize.x)
-            {
-                cp.x = _screenSize.x;
-                _dx *= -1;
-            }
-
-            if (cp.x < -_screenSize.x)
-            {
-                cp.x = -_screenSize.x;
-                _dx *= -1;
-            }
-
+            
             _view.UpdateView(cp);
         }
 

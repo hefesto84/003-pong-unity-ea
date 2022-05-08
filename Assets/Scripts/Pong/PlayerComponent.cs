@@ -40,8 +40,6 @@ namespace Pong
             //if (ct.y > 4 || ct.y < -4) return;
 
             transform.position = ct;
-
-            Collides2();
         }
 
         private void SetInitialPosition()
@@ -52,21 +50,5 @@ namespace Pong
 
         private bool _isColliding = false;
         
-        private void Collides2()
-        {
-            var ballPosition = ball.transform.position;
-            var paddlePosition = transform.position;
-            
-            if (ballRenderer.bounds.Intersects(paddleRenderer.bounds) && !_isColliding)
-            {
-                _isColliding = true;
-
-                ball.Collided(paddleType);
-            }
-            else
-            {
-                _isColliding = false;
-            }
-        }
     }
 }

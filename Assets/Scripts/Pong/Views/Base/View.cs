@@ -8,6 +8,7 @@ namespace Pong.Views.Base
     {
         public Bounds Bounds => SpriteRenderer.bounds;
         protected SpriteRenderer SpriteRenderer;
+        protected bool IsViewInitialized = false;
 
         private void Awake()
         {

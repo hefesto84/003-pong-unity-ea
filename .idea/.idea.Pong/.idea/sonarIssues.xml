@@ -163,6 +163,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/Game/GameSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/GameManager.cs">
           <value>
             <set />
@@ -174,6 +179,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/LimitsSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Systems/MatchSystem.cs">
           <value>
             <set />
           </value>

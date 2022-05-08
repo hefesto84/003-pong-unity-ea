@@ -1,6 +1,5 @@
 ﻿using Pong.Systems.Ball;
 using Pong.Systems.Paddle.Base;
-using UnityEngine;
 
 namespace Pong.Systems.Collision
 {
@@ -22,7 +21,8 @@ namespace Pong.Systems.Collision
             if (_ballSystem.View.Bounds.Intersects(_playerPaddleSystem.View.Bounds))
             {
                 _ballSystem.IsCollided(_playerPaddleSystem.PaddleType);
-            }else if (_ballSystem.View.Bounds.Intersects(_opponentPaddleSystem.View.Bounds))
+            }
+            else if (_ballSystem.View.Bounds.Intersects(_opponentPaddleSystem.View.Bounds))
             {
                 _ballSystem.IsCollided(_opponentPaddleSystem.PaddleType);
             }
