@@ -85,7 +85,15 @@ namespace Pong.Systems.Ball
 
         public void IsCollided(PaddleType paddleType)
         {
-            Debug.Log("Ball has collided with: "+paddleType);    
+            switch (paddleType)
+            {
+                case PaddleType.Player:
+                    _dx *= -1;
+                    break;
+                default:
+                    _dx *= -1;
+                    break;
+            }  
         }
         
         private void OnScreenResized(Vector3 screenSize)

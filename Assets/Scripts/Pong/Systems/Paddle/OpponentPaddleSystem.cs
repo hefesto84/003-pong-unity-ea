@@ -12,15 +12,20 @@ namespace Pong.Systems.Paddle
         public override void Update()
         {
             var ct = View.transform.position;
-            var inc = Input.GetAxis("Vertical");
+            //var inc = Input.GetAxis("Vertical");
 
-            var np = inc * Time.deltaTime * PaddleMovementSpeed;
-            
+            //var np = inc * Time.deltaTime * PaddleMovementSpeed;
+
+            ct.y = BallSystem.View.transform.position.y;
+        
+            /*
             ct += new Vector3(0, np, 0);
-
+            */
+            
             if (ct.y > ScreenSize.y || ct.y < -ScreenSize.y) return;
 
             View.UpdateView(ct);
+            
         }
 
         public override void Reset()
