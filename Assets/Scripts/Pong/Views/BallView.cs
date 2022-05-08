@@ -1,9 +1,7 @@
-using System;
 using Pong.Configurations;
 using UnityEngine;
-using UnityEngine.Windows.WebCam;
 
-namespace Pong
+namespace Pong.Views
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class BallView : MonoBehaviour
