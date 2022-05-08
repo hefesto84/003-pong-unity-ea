@@ -17,7 +17,7 @@ namespace Pong.Systems.Paddle
             
             ct += new Vector3(0, np, 0);
 
-            //if (ct.y > 4 || ct.y < -4) return;
+            if (ct.y > ScreenSize.y || ct.y < -ScreenSize.y) return;
 
             PaddleView.UpdateView(ct);
         }
