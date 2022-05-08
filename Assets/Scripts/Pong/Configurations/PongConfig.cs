@@ -9,7 +9,8 @@ namespace Pong.Configurations
         public float paddleMovementSpeed = 3f;
         public float initialBallSpeed = 3f;
         public int victoryPoints = 3;
-        public Sprite paddleSprite;
+        public Sprite playerPaddleSprite;
+        public Sprite opponentPlayerSprite;
         public Sprite ballSprite;
     }
 }

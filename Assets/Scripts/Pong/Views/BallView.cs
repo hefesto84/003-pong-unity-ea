@@ -1,9 +1,7 @@
-using System;
 using Pong.Configurations;
 using UnityEngine;
-using UnityEngine.Windows.WebCam;
 
-namespace Pong
+namespace Pong.Views
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class BallView : MonoBehaviour
@@ -11,6 +9,8 @@ namespace Pong
         private Vector3 _screenSize;
         private SpriteRenderer _spriteRenderer;
         
+        public Bounds Bounds => _spriteRenderer.bounds;
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();

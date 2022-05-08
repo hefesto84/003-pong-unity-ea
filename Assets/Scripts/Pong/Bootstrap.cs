@@ -1,7 +1,10 @@
 using System;
 using Pong.Configurations;
+using Pong.Managers;
 using Pong.Services;
 using Pong.Systems;
+using Pong.Systems.Ball;
+using Pong.Systems.Paddle;
 using UnityEngine;
 
 namespace Pong
@@ -12,6 +15,8 @@ namespace Pong
 
         private GameManager _gameManager;
         private BallSystem _ballSystem;
+        private PlayerPaddleSystem _playerPaddleSystem;
+        private OpponentPaddleSystem _opponentPaddleSystem;
 
         private ConfigService _configService;
         private ScreenService _screenService;
@@ -28,7 +33,7 @@ namespace Pong
             InitSystems();
             
             // Initialisation of the GameManager
-            _gameManager.Init(_configService, _screenService, _ballSystem);
+            _gameManager.Init(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem);
         }
 
         private void InitServices()
@@ -46,11 +51,15 @@ namespace Pong
         private void InitSystems()
         {
             _ballSystem = new BallSystem(_configService, _screenService);
+            _playerPaddleSystem = new PlayerPaddleSystem(_configService, _screenService);
+            _opponentPaddleSystem = new OpponentPaddleSystem(_configService, _screenService);
         }
 
         private void OnDestroy()
         {
             _ballSystem = null;
+            _playerPaddleSystem = null;
+            _opponentPaddleSystem = null;
         }
     }
 }

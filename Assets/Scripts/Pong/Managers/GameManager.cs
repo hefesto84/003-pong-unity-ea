@@ -1,11 +1,12 @@
-﻿using System;
-using Pong.Configurations;
-using Pong.FSM.States;
+﻿using Pong.FSM.States;
 using Pong.FSM.States.Base;
 using Pong.Services;
+using Pong.Systems;
+using Pong.Systems.Ball;
+using Pong.Systems.Paddle.Base;
 using UnityEngine;
 
-namespace Pong.Systems
+namespace Pong.Managers
 {
     public class GameManager : MonoBehaviour
     {
@@ -21,13 +22,17 @@ namespace Pong.Systems
         private ScreenService _screenService;
 
         private BallSystem _ballSystem;
+        private PaddleSystem _playerPaddleSystem;
+        private PaddleSystem _opponentPaddleSystem;
         
-        public void Init(ConfigService configService, ScreenService screenService, BallSystem ballSystem)
+        public void Init(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PaddleSystem playerPaddleSystem, PaddleSystem opponentPaddleSystem )
         {
             _configService = configService;
             _screenService = screenService;
 
             _ballSystem = ballSystem;
+            _playerPaddleSystem = playerPaddleSystem;
+            _opponentPaddleSystem = opponentPaddleSystem;
             
             SetDependencies();
         }
@@ -50,7 +55,7 @@ namespace Pong.Systems
             
             InitGameState = new InitGameState(this);
             
-            GameState = new GameState(_configService, _screenService, _ballSystem, this);
+            GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, this);
 
             _currentState = InitGameState;
             
