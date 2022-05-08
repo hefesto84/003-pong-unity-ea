@@ -13,14 +13,11 @@ namespace Pong.Systems.Paddle.Base
         protected Vector3 ScreenSize;
         private readonly PaddleType _paddleType;
         protected readonly float PaddleMovementSpeed;
-        
-        //private float ResizedX => _paddleType == PaddleType.Player ? -ScreenSize.x + 2f : ScreenSize.x - 2f;
-        
+ 
         protected PaddleSystem(ConfigService configService, ScreenService screenService, PaddleType paddleType)
         {
             _configService = configService;
             _screenService = screenService;
-            //_screenService.OnScreenResized += OnScreenResized;
 
             _paddleType = paddleType;
             
@@ -28,33 +25,20 @@ namespace Pong.Systems.Paddle.Base
 
             ScreenSize = _screenService.CurrentSize;
         }
-        
-        ~PaddleSystem()
-        {
-            //_screenService.OnScreenResized -= OnScreenResized;
-        }
-
-        public virtual void Update(){}
+ 
+        public virtual void Update(Bounds ballBounds){}
         public virtual void Reset(){}
 
         protected void SetupView()
         {
             if (PaddleView == null) PaddleView = new GameObject("Paddle").AddComponent<PaddleView>();
 
-            //PaddleView.transform.position = new Vector3(ResizedX, 0, 0);
-            
             PaddleView.Init(_configService, _screenService, _paddleType);
         }
         
-        /*
-        private void OnScreenResized(Vector3 screenSize)
+        protected bool IsCollision(Bounds ballBounds)
         {
-            ScreenSize = screenSize;
-
-            var pt = PaddleView.transform.position;
-            pt.x = ResizedX;
-            PaddleView.UpdateView(pt);
+            return ballBounds.Intersects(PaddleView.Bounds);
         }
-        */
     }
 }

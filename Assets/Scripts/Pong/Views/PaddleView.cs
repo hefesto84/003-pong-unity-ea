@@ -1,6 +1,4 @@
-﻿using System;
-using Pong.Configurations;
-using Pong.Services;
+﻿using Pong.Services;
 using UnityEngine;
 
 namespace Pong.Views
@@ -8,9 +6,10 @@ namespace Pong.Views
     [RequireComponent(typeof(SpriteRenderer))]
     public class PaddleView : MonoBehaviour
     {
+        public Bounds Bounds => _spriteRenderer.bounds;
+        
         private SpriteRenderer _spriteRenderer;
         private ScreenService _screenService;
-        private Bounds _rendererBounds;
         private PaddleType _paddleType;
 
         private void Awake()
@@ -26,9 +25,6 @@ namespace Pong.Views
             _paddleType = paddleType;
             _spriteRenderer.sprite = _paddleType == PaddleType.Player ? configService.PongConfig.playerPaddleSprite : configService.PongConfig.opponentPlayerSprite;
             
-            _rendererBounds = _spriteRenderer.bounds;
-            
-            Debug.Log("B: "+_rendererBounds);
             OnScreenResized(_screenService.CurrentSize);
         }
         
@@ -40,7 +36,7 @@ namespace Pong.Views
         private void OnScreenResized(Vector3 screenSize)
         {
             var pt = transform.position;
-            pt.x = _paddleType == PaddleType.Player ? -screenSize.x + _rendererBounds.size.x*2 : screenSize.x - _rendererBounds.size.x*2;
+            pt.x = _paddleType == PaddleType.Player ? -screenSize.x + Bounds.size.x*2 : screenSize.x - Bounds.size.x*2;
             UpdateView(pt);
         }
 

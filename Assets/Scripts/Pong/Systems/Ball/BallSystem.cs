@@ -2,8 +2,9 @@
 using Pong.Views;
 using UnityEngine;
 
-namespace Pong.Systems
+namespace Pong.Systems.Ball
 {
+    /* TODO: remove dependency of OnScreenResized */
     public class BallSystem
     {
         private readonly ConfigService _configService;
@@ -13,6 +14,8 @@ namespace Pong.Systems
 
         private float _dx = 8f;
         private float _dy = 8f;
+        
+        public Bounds Bounds => _ball.Bounds;
         
         public BallSystem(ConfigService configService, ScreenService screenService)
         {

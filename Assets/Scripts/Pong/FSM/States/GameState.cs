@@ -3,6 +3,7 @@ using Pong.FSM.States.Base;
 using Pong.Managers;
 using Pong.Services;
 using Pong.Systems;
+using Pong.Systems.Ball;
 using Pong.Systems.Paddle;
 using Pong.Systems.Paddle.Base;
 using UnityEngine;
@@ -59,8 +60,9 @@ namespace Pong.FSM.States
             if (IsPaused) return;
             
             _ballSystem.Update();
-            _playerPaddleSystem.Update();
-            _opponentPaddleSystem.Update();
+            
+            _playerPaddleSystem.Update(_ballSystem.Bounds);
+            _opponentPaddleSystem.Update(_ballSystem.Bounds);
         }
 
         private void InitDependencies()

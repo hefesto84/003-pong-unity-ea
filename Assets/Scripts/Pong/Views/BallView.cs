@@ -9,6 +9,8 @@ namespace Pong.Views
         private Vector3 _screenSize;
         private SpriteRenderer _spriteRenderer;
         
+        public Bounds Bounds => _spriteRenderer.bounds;
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
