@@ -7,7 +7,7 @@ namespace Pong
     {
         [Range(1, 10)] [SerializeField] private int movementSpeed = 3;
 
-        [SerializeField] private BallComponent ball;
+        [SerializeField] private BallView ball;
         [SerializeField] private PaddleType paddleType;
         
         private Vector2 _direction;

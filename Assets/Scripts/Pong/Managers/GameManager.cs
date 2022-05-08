@@ -20,15 +20,13 @@ namespace Pong.Systems
         private ConfigService _configService;
         private ScreenService _screenService;
 
-        private LimitsSystem _limitsSystem;
         private BallSystem _ballSystem;
         
-        public void Init(ConfigService configService, ScreenService screenService, LimitsSystem limitsSystem, BallSystem ballSystem)
+        public void Init(ConfigService configService, ScreenService screenService, BallSystem ballSystem)
         {
             _configService = configService;
             _screenService = screenService;
 
-            _limitsSystem = limitsSystem;
             _ballSystem = ballSystem;
             
             SetDependencies();

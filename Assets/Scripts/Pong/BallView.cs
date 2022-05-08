@@ -6,7 +6,7 @@ using UnityEngine.Windows.WebCam;
 namespace Pong
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class BallComponent : MonoBehaviour
+    public class BallView : MonoBehaviour
     {
         private Vector3 _screenSize;
         private SpriteRenderer _spriteRenderer;
@@ -14,12 +14,16 @@ namespace Pong
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _screenSize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         }
 
         public void Init(PongConfig pongConfig)
         {
             _spriteRenderer.sprite = pongConfig.ballSprite;
+        }
+
+        public void UpdateView(Vector3 position)
+        {
+            transform.position = position;
         }
         
         public void Collided(PaddleType paddleType)
