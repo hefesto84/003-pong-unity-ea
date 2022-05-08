@@ -17,14 +17,18 @@ namespace Pong
         
         private void Awake()
         {
+            
             _screenSize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         }
 
-        void Update()
+        private void Update()
         {
             var dt = Time.deltaTime;
             var ct = transform;
             var cp = ct.position;
+            
+            cp.x += _dx * dt;
+            cp.y += _dy * dt;
             
             if (cp.y > _screenSize.y)
             {
@@ -50,14 +54,15 @@ namespace Pong
                 _dx *= -1;
             }
             
-            cp.x += _dx * dt;
-            cp.y += _dy * dt;
+            
             
             ct.position = cp;
         }
 
+        
         public void Collided(PaddleType paddleType)
         {
+            Debug.Log("COLLIDES!"+Time.deltaTime);
             switch (paddleType)
             {
                 case PaddleType.Player:

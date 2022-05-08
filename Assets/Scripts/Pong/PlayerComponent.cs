@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Pong
 {
-    [RequireComponent(typeof(BoxCollider2D))]
     public class PlayerComponent : MonoBehaviour
     {
         [Range(1, 10)] [SerializeField] private int movementSpeed = 3;
@@ -15,9 +14,16 @@ namespace Pong
 
         private Vector2 _size;
         private SpriteRenderer sp;
+        private Bounds _bounds;
+
+        private SpriteRenderer paddleRenderer;
+        private SpriteRenderer ballRenderer;
+        
         private void Awake()
         {
-            sp = GetComponent<SpriteRenderer>();
+            paddleRenderer = GetComponent<SpriteRenderer>();
+            ballRenderer = ball.GetComponent<SpriteRenderer>();
+            
             SetInitialPosition();
         }
 
@@ -30,11 +36,10 @@ namespace Pong
             
             ct += new Vector3(0, np, 0);
 
-            if (ct.y > 4 || ct.y < -4) return;
+            //if (ct.y > 4 || ct.y < -4) return;
 
             transform.position = ct;
-            
-            
+
             Collides2();
         }
 
@@ -44,14 +49,22 @@ namespace Pong
             transform.position = new Vector3(paddleType == PaddleType.Player ? -_size.x+1 : _size.x-1, 0, 0);
         }
 
+        private bool _isColliding = false;
+        
         private void Collides2()
         {
             var ballPosition = ball.transform.position;
             var paddlePosition = transform.position;
-
-            if (ball.GetComponent<SpriteRenderer>().bounds.Intersects(sp.bounds))
+            
+            if (ballRenderer.bounds.Intersects(paddleRenderer.bounds) && !_isColliding)
             {
+                _isColliding = true;
+
                 ball.Collided(paddleType);
+            }
+            else
+            {
+                _isColliding = false;
             }
         }
     }
