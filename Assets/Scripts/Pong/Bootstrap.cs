@@ -15,6 +15,7 @@ namespace Pong
     {
         [SerializeField] private PongConfig pongConfig;
         [SerializeField] private UIScoreView scoreView;
+        [SerializeField] private UIGameResultView gameResultView;
         
         private GameManager _gameManager;
         
@@ -61,7 +62,7 @@ namespace Pong
             
             _configService.Init(pongConfig);
             _screenService.Init(Camera.main);
-            _scoreService.Init();
+            _scoreService.Init(_configService);
             
             _configService.transform.SetParent(transform);
             _screenService.transform.SetParent(transform);
@@ -79,6 +80,7 @@ namespace Pong
         private void InitUI()
         {
             scoreView.Init(_scoreService);
+            gameResultView.Init(_scoreService);
         }
         
         private void OnDestroy()
