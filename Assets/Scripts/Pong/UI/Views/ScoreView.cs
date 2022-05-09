@@ -9,15 +9,19 @@ namespace Pong.UI.Views
 {
     public class ScoreView : UIView
     {
-        private ScoreService _scoreService;
         [SerializeField] private TextMeshProUGUI scoreText;
+        
+        private ScoreService _scoreService;
+        private const string DefaultScoreText = "0 - 0";
         
         public override void Init(ScoreService scoreService)
         {
             name = GetType().ToString();
+            
             _scoreService = scoreService;
             _scoreService.OnScoreUpdated += OnScoreUpdated;
-            scoreText.text = "0 - 0";
+            
+            Reset();
         }
 
         private void OnScoreUpdated(Dictionary<PlayerType, int> score)
@@ -32,7 +36,7 @@ namespace Pong.UI.Views
 
         public override void Reset()
         {
-            scoreText.text = "0 - 0";
+            scoreText.text = DefaultScoreText;
         }
     }
 }
