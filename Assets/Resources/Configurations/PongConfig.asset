@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddleMovementSpeed: 20
   initialBallSpeed: 15
-  victoryPoints: 1
+  victoryPoints: 5
   playerPaddleSprite: {fileID: 1600142426, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
   opponentPlayerSprite: {fileID: 2037879689, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
   ballSprite: {fileID: 2015711498, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}

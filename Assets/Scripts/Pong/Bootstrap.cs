@@ -1,12 +1,12 @@
 using System;
-using Pong.Configurations;
-using Pong.Managers;
-using Pong.Services;
-using Pong.Systems;
-using Pong.Systems.Ball;
-using Pong.Systems.Collision;
-using Pong.Systems.Game;
-using Pong.Systems.Paddle;
+using Pong.Core.Configurations;
+using Pong.Core.Managers;
+using Pong.Core.Services;
+using Pong.Core.Systems.Ball;
+using Pong.Core.Systems.Collision;
+using Pong.Core.Systems.Game;
+using Pong.Core.Systems.Paddle;
+using Pong.UI.Views;
 using UnityEngine;
 
 namespace Pong
@@ -14,7 +14,8 @@ namespace Pong
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private PongConfig pongConfig;
-
+        [SerializeField] private UIScoreView scoreView;
+        
         private GameManager _gameManager;
         
         private BallSystem _ballSystem;
@@ -37,6 +38,9 @@ namespace Pong
             
             // Initialisation of the systems
             InitSystems();
+
+            // Initialisation of the UI
+            InitUI();
             
             // Initialisation of the GameManager
             _gameManager.Init(
@@ -72,6 +76,11 @@ namespace Pong
             _gameSystem = new GameSystem(_configService, _screenService, _scoreService, _ballSystem);
         }
 
+        private void InitUI()
+        {
+            scoreView.Init(_scoreService);
+        }
+        
         private void OnDestroy()
         {
             _ballSystem = null;
