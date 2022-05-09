@@ -54,7 +54,7 @@ namespace Pong.Core.Managers
         
         public void SetState(State state)
         {
-            _currentState.Stop();
+            _currentState?.Stop();
             _currentState = state;
             _currentState.Start();
             
@@ -76,7 +76,7 @@ namespace Pong.Core.Managers
 
             GameOverState = new GameOverState(this);
             
-            _currentState = InitGameState;
+            SetState(InitGameState);
             
             IsReady = true;
         }

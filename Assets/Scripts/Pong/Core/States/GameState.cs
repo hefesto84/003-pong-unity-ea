@@ -45,11 +45,6 @@ namespace Pong.Core.States
             _uiSystem = uiSystem;
         }
 
-        public override void Start()
-        {
-            Debug.Log(GetType());
-        }
-
         public override void DoState()
         {
             switch (IsPlaying)

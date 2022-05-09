@@ -10,6 +10,7 @@ namespace Pong.Core.States
 
         public override void Start()
         {
+            base.Start();
             Debug.Log("GAME OVER");
         }
 

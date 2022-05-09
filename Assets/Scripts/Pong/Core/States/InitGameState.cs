@@ -36,19 +36,9 @@ namespace Pong.Core.States
             _uiSystem = uiSystem;
         }
 
-        public override void Start()
-        {
-            Debug.Log(GetType());
-        }
-        
         public override void DoState()
         {
             InitDependencies();
-        }
-
-        public override void Stop()
-        {
-            Debug.Log($"{GetType()} Stop");
         }
 
         private void InitDependencies()
