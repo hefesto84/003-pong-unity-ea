@@ -338,6 +338,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/Base/UIView.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/GameResultView.cs">
           <value>
             <set />

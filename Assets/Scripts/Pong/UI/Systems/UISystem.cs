@@ -16,6 +16,11 @@ namespace Pong.UI.Systems
             _uiController.Init(configService, scoreService);
         }
 
+        public override void Reset()
+        {
+            _uiController.Reset();
+        }
+
         public override void Init()
         {
             Debug.Log("INITIALIZATION OF UISYSTEM");

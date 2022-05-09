@@ -1,4 +1,3 @@
-using System;
 using Pong.Core.Configurations;
 using Pong.Core.Managers;
 using Pong.Core.Services;
@@ -8,7 +7,6 @@ using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle;
 using Pong.UI.Controllers;
 using Pong.UI.Systems;
-using Pong.UI.Views;
 using UnityEngine;
 
 namespace Pong
@@ -84,6 +82,7 @@ namespace Pong
             
             _configService.transform.SetParent(transform);
             _screenService.transform.SetParent(transform);
+            _scoreService.transform.SetParent(transform);
         }
 
         private void BuildSystems()

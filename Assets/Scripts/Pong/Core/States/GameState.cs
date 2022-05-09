@@ -34,7 +34,7 @@ namespace Pong.Core.States
             CollisionSystem collisionSystem,
             GameSystem gameSystem,
             UISystem uiSystem,
-            GameManager gameManager) : base(gameManager)
+            GameManager gameManager) : base(gameManager, StateType.GameState)
         {
             _pongConfig = configService.PongConfig;
             _ballSystem = ballSystem;
@@ -53,7 +53,7 @@ namespace Pong.Core.States
                     ProcessState();
                     return;
                 case false:
-                    InitDependencies();
+                    ResetSystems();
                     IsPlaying = true;
                     IsPaused = false;
                     break;
@@ -94,13 +94,14 @@ namespace Pong.Core.States
             IsPlaying = false;
         }
         
-        private void InitDependencies()
+        private void ResetSystems()
         {
             _ballSystem.Reset();
             _playerPaddleSystem.Reset();
             _opponentPaddleSystem.Reset();
             _collisionSystem.Reset();
             _gameSystem.Reset();
+            _uiSystem.Reset();
         }
     }
 }

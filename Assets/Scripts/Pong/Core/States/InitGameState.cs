@@ -26,7 +26,7 @@ namespace Pong.Core.States
             CollisionSystem collisionSystem,
             GameSystem gameSystem,
             UISystem uiSystem,
-            GameManager gameManager) : base(gameManager)
+            GameManager gameManager) : base(gameManager, StateType.InitGameState)
         {
             _ballSystem = ballSystem;
             _playerPaddleSystem = playerPaddleSystem as PlayerPaddleSystem;

@@ -3,31 +3,23 @@ using UnityEngine;
 
 namespace Pong.Core.States.Base
 {
-    /*
-    public abstract class State
+    public enum StateType
     {
-        public IEnumerator Start()
-        {
-            yield break;
-        }
-
-        public IEnumerator Bootstrap()
-        {
-            yield break;    
-        }
-
-        public IEnumerator Game()
-        {
-            yield break;
-        }
-    }*/
+        InitGameState,
+        GameState,
+        GameOverState,
+    }
+    
     public abstract class State
     {
         protected readonly GameManager GameManager;
         
-        protected State(GameManager gameManager)
+        public StateType StateType { get; private set; }
+        
+        protected State(GameManager gameManager, StateType stateType)
         {
             GameManager = gameManager;
+            StateType = stateType;
         }
 
         public virtual void Start()
