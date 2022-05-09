@@ -2,7 +2,8 @@
 {
     public abstract class System
     {
-        public abstract void Update();
-        public abstract void Reset();
+        public virtual void Init(){}
+        public virtual void Update(){}
+        public virtual void Reset(){}
     }
 }

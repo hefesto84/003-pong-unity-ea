@@ -16,7 +16,7 @@ namespace Pong.Core.Systems.Paddle.Base
         private readonly ScreenService _screenService;
         protected Vector3 ScreenSize;
         
-        protected readonly float PaddleMovementSpeed;
+        protected float PaddleMovementSpeed;
         
         protected PaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PlayerType playerType)
         {
@@ -24,20 +24,14 @@ namespace Pong.Core.Systems.Paddle.Base
             _screenService = screenService;
             
             BallSystem = ballSystem;
-
             PlayerType = playerType;
-            
-            PaddleMovementSpeed = configService.PongConfig.paddleMovementSpeed;
-
-            ScreenSize = _screenService.CurrentSize;
         }
 
-        public void CheckCollision()
+        public override void Init()
         {
-            if (BallSystem.View.Bounds.Intersects(View.Bounds))
-            {
-                BallSystem.IsCollided(PlayerType);
-            }
+            PaddleMovementSpeed = ConfigService.PongConfig.paddleMovementSpeed;
+
+            ScreenSize = _screenService.CurrentSize;
         }
 
         public override void Update()
@@ -60,15 +54,5 @@ namespace Pong.Core.Systems.Paddle.Base
             
             View.Init(ConfigService, _screenService, PlayerType);
         }
-
-        /*
-        protected void CheckCollision()
-        {
-            if (_ballSystem.Bounds.Intersects(PaddleView.Bounds))
-            {
-                _ballSystem.IsCollided(_paddleType);
-            }
-        }
-        */
     }
 }

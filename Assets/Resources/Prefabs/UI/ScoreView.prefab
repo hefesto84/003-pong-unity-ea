@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2143423037113932688}
   - component: {fileID: 2143423037113932694}
   m_Layer: 5
-  m_Name: UIScore
+  m_Name: ScoreView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

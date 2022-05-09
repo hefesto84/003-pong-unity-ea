@@ -16,8 +16,8 @@ namespace Pong.Core.Systems.Game
         private Vector3 _screenSize;
         private Vector3 _currentBallPosition;
 
-        private readonly Dictionary<PlayerType, int> _currentScore;
-        private readonly PongConfig _pongConfig;
+        private Dictionary<PlayerType, int> _currentScore;
+        private PongConfig _pongConfig;
 
         public bool IsGameOver =>
             _currentScore[PlayerType.Player] == _pongConfig.victoryPoints ||
@@ -30,21 +30,24 @@ namespace Pong.Core.Systems.Game
             _scoreService = scoreService;
             
             _ballSystem = ballSystem;
-
-            _screenService.OnScreenResized += OnScreenResized;
-
-            _currentScore = new Dictionary<PlayerType, int>();
-            
-            ResetScore();
-
-            _pongConfig = _configService.PongConfig;
         }
 
         ~GameSystem()
         {
             _screenService.OnScreenResized -= OnScreenResized;
         }
-        
+
+        public override void Init()
+        {
+            _screenService.OnScreenResized += OnScreenResized;
+
+            _currentScore = new Dictionary<PlayerType, int>();
+            
+            _pongConfig = _configService.PongConfig;
+            
+            ResetScore();
+        }
+
         public override void Reset()
         {
             _screenSize = _screenService.CurrentSize;

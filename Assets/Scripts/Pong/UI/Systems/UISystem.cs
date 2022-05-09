@@ -1,31 +1,29 @@
 ﻿using Pong.Core.Managers;
+using Pong.Core.Services;
 using Pong.Core.States.Base;
+using Pong.UI.Controllers;
 using UnityEngine;
 
 namespace Pong.UI.Systems
 {
     public class UISystem : Core.Systems.Base.System
     {
-        private State _currentState;
+        private readonly UIController _uiController;
         
-        public UISystem()
+        public UISystem(ConfigService configService, UIController uiController)
         {
-            
-        }
-        
-        public override void Update()
-        {
-            
+            _uiController = uiController;
+            _uiController.Init(configService);
         }
 
-        public override void Reset()
+        public override void Init()
         {
-            
+            Debug.Log("INITIALIZATION OF UISYSTEM");
         }
 
         public void SetState(State state)
         {
-            _currentState = state;
+            _uiController.SetState(state);
         }
     }
 }

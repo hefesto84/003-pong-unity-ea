@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Pong.UI.Views
 {
-    public class UIScoreView : MonoBehaviour
+    public class ScoreView : MonoBehaviour
     {
         private ScoreService _scoreService;
         [SerializeField] private TextMeshProUGUI scoreText;

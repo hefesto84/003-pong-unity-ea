@@ -33,10 +33,15 @@ namespace Pong.Core.Systems.Ball
         {
             _screenService.OnScreenResized -= OnScreenResized;
         }
-        
-        public override void Reset()
+
+        public override void Init()
         {
             SetupBallView();
+        }
+
+        public override void Reset()
+        {
+            _view.transform.position = Vector3.zero;
             
             _dx = _configService.PongConfig.initialBallSpeed;
             _dy = _configService.PongConfig.initialBallSpeed;

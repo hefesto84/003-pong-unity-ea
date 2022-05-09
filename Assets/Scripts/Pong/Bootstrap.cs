@@ -6,6 +6,7 @@ using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle;
+using Pong.UI.Controllers;
 using Pong.UI.Systems;
 using Pong.UI.Views;
 using UnityEngine;
@@ -15,6 +16,9 @@ namespace Pong
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private PongConfig pongConfig;
+
+        [SerializeField] private Transform canvas;
+        
         //[SerializeField] private UIScoreView scoreView;
         //[SerializeField] private UIGameResultView gameResultView;
         
@@ -31,6 +35,8 @@ namespace Pong
         private ScreenService _screenService;
         private ScoreService _scoreService;
 
+        private UIController _uiController;
+
         private void Start()
         {
             _gameManager = new GameObject("GameManager").AddComponent<GameManager>();
@@ -39,8 +45,11 @@ namespace Pong
             // Initialisation of the services
             InitServices();
             
-            // Initialisation of the systems
-            InitSystems();
+            // Build controllers
+            BuildControllers();
+            
+            // Build systems
+            BuildSystems();
 
             // Initialisation of the GameManager
             _gameManager.Init(
@@ -54,6 +63,12 @@ namespace Pong
                 _uiSystem);
         }
 
+        private void BuildControllers()
+        {
+            _uiController = new GameObject("UIController").AddComponent<UIController>();
+            _uiController.transform.SetParent(canvas);
+        }
+        
         private void InitServices()
         {
             _configService = new GameObject("ConfigService").AddComponent<ConfigService>();
@@ -68,14 +83,14 @@ namespace Pong
             _screenService.transform.SetParent(transform);
         }
 
-        private void InitSystems()
+        private void BuildSystems()
         {
             _ballSystem = new BallSystem(_configService, _screenService);
             _playerPaddleSystem = new PlayerPaddleSystem(_configService, _screenService, _ballSystem);
             _opponentPaddleSystem = new OpponentPaddleSystem(_configService, _screenService, _ballSystem);
             _collisionSystem = new CollisionSystem(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem);
             _gameSystem = new GameSystem(_configService, _screenService, _scoreService, _ballSystem);
-            _uiSystem = new UISystem();
+            _uiSystem = new UISystem(_configService, _uiController);
         }
 
         private void OnDestroy()

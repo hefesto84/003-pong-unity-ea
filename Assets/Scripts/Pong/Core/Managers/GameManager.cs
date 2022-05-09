@@ -80,5 +80,10 @@ namespace Pong.Core.Managers
             
             IsReady = true;
         }
+
+        private void InitSystems()
+        {
+            
+        }
     }
 }

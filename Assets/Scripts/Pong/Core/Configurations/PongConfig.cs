@@ -13,5 +13,7 @@ namespace Pong.Core.Configurations
         public Sprite playerPaddleSprite;
         public Sprite opponentPlayerSprite;
         public Sprite ballSprite;
+        public GameObject scoreView;
+        public GameObject resultView;
     }
 }

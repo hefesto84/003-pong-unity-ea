@@ -19,3 +19,5 @@ MonoBehaviour:
   playerPaddleSprite: {fileID: 1600142426, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
   opponentPlayerSprite: {fileID: 2037879689, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
   ballSprite: {fileID: 2015711498, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
+  scoreView: {fileID: 2143423037113932690, guid: bef412dfa56840c4fa0f98827fdbe426, type: 3}
+  resultView: {fileID: 521869680638836696, guid: b59d529412192e04cb4da94893328135, type: 3}

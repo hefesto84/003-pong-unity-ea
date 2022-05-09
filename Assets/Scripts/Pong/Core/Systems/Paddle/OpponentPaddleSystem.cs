@@ -9,7 +9,6 @@ namespace Pong.Core.Systems.Paddle
     {
         public OpponentPaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem) : base(configService, screenService, ballSystem, PlayerType.Opponent) { }
 
-        
         public override void Update()
         {
             if (!ConfigService.PongConfig.isAIEnabled)

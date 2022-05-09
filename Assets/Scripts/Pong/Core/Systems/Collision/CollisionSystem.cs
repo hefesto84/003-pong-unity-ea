@@ -16,11 +16,6 @@ namespace Pong.Core.Systems.Collision
             _opponentPaddleSystem = opponentPaddleSystem;
         }
 
-        public override void Reset()
-        {
-            
-        }
-
         public override void Update()
         {
             if (_ballSystem.View.Bounds.Intersects(_playerPaddleSystem.View.Bounds))

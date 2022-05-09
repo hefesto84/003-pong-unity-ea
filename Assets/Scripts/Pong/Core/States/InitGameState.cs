@@ -36,12 +36,22 @@ namespace Pong.Core.States
             _uiSystem = uiSystem;
         }
 
-        public override void DoState()
+        public override void Start()
         {
-            InitDependencies();
+            _ballSystem.Init();
+            _playerPaddleSystem.Init();
+            _opponentPaddleSystem.Init();
+            _collisionSystem.Init();
+            _gameSystem.Init();
+            _uiSystem.Init();
         }
 
-        private void InitDependencies()
+        public override void DoState()
+        {
+            ResetSystems();
+        }
+
+        private void ResetSystems()
         {
             _ballSystem.Reset();
             _playerPaddleSystem.Reset();
