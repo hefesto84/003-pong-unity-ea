@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Pong.Core.Enums;
 using Pong.Core.Services;
 using TMPro;

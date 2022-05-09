@@ -10,6 +10,7 @@ namespace Pong.Core.Systems.Paddle
     {
         public PlayerPaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem) : base(configService, screenService, ballSystem, PlayerType.Player) { }
 
+        /*
         public override void Update()
         {
             var ct = View.transform.position;
@@ -23,6 +24,7 @@ namespace Pong.Core.Systems.Paddle
 
             View.UpdateView(ct);
         }
+        */
 
         public override void Reset()
         {

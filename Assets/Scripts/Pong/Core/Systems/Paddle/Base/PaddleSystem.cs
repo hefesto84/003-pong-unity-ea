@@ -12,7 +12,7 @@ namespace Pong.Core.Systems.Paddle.Base
         public PlayerType PlayerType { get; private set; }
 
         protected readonly BallSystem BallSystem;
-        private readonly ConfigService _configService;
+        protected readonly ConfigService ConfigService;
         private readonly ScreenService _screenService;
         protected Vector3 ScreenSize;
         
@@ -20,7 +20,7 @@ namespace Pong.Core.Systems.Paddle.Base
         
         protected PaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PlayerType playerType)
         {
-            _configService = configService;
+            ConfigService = configService;
             _screenService = screenService;
             
             BallSystem = ballSystem;
@@ -40,11 +40,25 @@ namespace Pong.Core.Systems.Paddle.Base
             }
         }
 
+        public override void Update()
+        {
+            var ct = View.transform.position;
+            var inc = Input.GetAxis("Vertical");
+
+            var np = inc * Time.deltaTime * PaddleMovementSpeed;
+            
+            ct += new Vector3(0, np, 0);
+
+            if (ct.y > ScreenSize.y || ct.y < -ScreenSize.y) return;
+
+            View.UpdateView(ct);
+        }
+
         protected void SetupView()
         {
             if (View == null) View = new GameObject("Paddle").AddComponent<PaddleView>();
             
-            View.Init(_configService, _screenService, PlayerType);
+            View.Init(ConfigService, _screenService, PlayerType);
         }
 
         /*
