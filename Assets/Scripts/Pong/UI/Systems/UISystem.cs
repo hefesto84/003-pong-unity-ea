@@ -10,10 +10,10 @@ namespace Pong.UI.Systems
     {
         private readonly UIController _uiController;
         
-        public UISystem(ConfigService configService, UIController uiController)
+        public UISystem(ConfigService configService, ScoreService scoreService, UIController uiController)
         {
             _uiController = uiController;
-            _uiController.Init(configService);
+            _uiController.Init(configService, scoreService);
         }
 
         public override void Init()

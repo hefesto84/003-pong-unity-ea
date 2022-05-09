@@ -9,12 +9,14 @@ namespace Pong.UI.Controllers
     public class UIController : MonoBehaviour
     {
         private ConfigService _configService;
+        private ScoreService _scoreService;
         private ScoreView _scoreView;
         private GameResultView _gameResultView;
         
-        public void Init(ConfigService configService)
+        public void Init(ConfigService configService, ScoreService scoreService)
         {
             _configService = configService;
+            _scoreService = scoreService;
         }
 
         public void SetState(State state)
@@ -23,18 +25,30 @@ namespace Pong.UI.Controllers
             {
                 BuildViews();
             }
+
+            if (state.GetType() == typeof(GameState))
+            {
+                _gameResultView.gameObject.SetActive(false);
+                _scoreView.gameObject.SetActive(true);
+            }
+
+            if (state.GetType() == typeof(GameOverState))
+            {
+                _gameResultView.gameObject.SetActive(true);
+                _scoreView.gameObject.SetActive(false);
+            }
         }
 
         private void BuildViews()
         {
-            _scoreView = Instantiate(_configService.PongConfig.scoreView).GetComponent<ScoreView>();
-            _gameResultView = Instantiate(_configService.PongConfig.resultView).GetComponent<GameResultView>();
-
+            _scoreView = Instantiate(_configService.PongConfig.scoreView, transform).GetComponent<ScoreView>();
+            _gameResultView = Instantiate(_configService.PongConfig.resultView, transform).GetComponent<GameResultView>();
+            
             _scoreView.name = "ScoreView";
             _gameResultView.name = "GameResultView";
             
-            _scoreView.transform.SetParent(transform);
-            _gameResultView.transform.SetParent(transform);
+            _scoreView.Init(_scoreService);
+            _gameResultView.Init(_scoreService);
         }
     }
 }

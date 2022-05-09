@@ -66,7 +66,10 @@ namespace Pong
         private void BuildControllers()
         {
             _uiController = new GameObject("UIController").AddComponent<UIController>();
-            _uiController.transform.SetParent(canvas);
+
+            var ut = _uiController.transform;
+            ut.SetParent(canvas);
+            ut.localScale = Vector3.one;
         }
         
         private void InitServices()
@@ -90,7 +93,7 @@ namespace Pong
             _opponentPaddleSystem = new OpponentPaddleSystem(_configService, _screenService, _ballSystem);
             _collisionSystem = new CollisionSystem(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem);
             _gameSystem = new GameSystem(_configService, _screenService, _scoreService, _ballSystem);
-            _uiSystem = new UISystem(_configService, _uiController);
+            _uiSystem = new UISystem(_configService, _scoreService, _uiController);
         }
 
         private void OnDestroy()
