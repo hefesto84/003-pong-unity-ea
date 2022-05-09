@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Pong.Configurations;
 using Pong.Services;
 using Pong.Systems.Ball;
@@ -7,7 +6,7 @@ using UnityEngine;
 
 namespace Pong.Systems.Game
 {
-    public class GameSystem
+    public class GameSystem : Base.System
     {
         private ConfigService _configService;
         private ScreenService _screenService;
@@ -45,13 +44,13 @@ namespace Pong.Systems.Game
             _screenService.OnScreenResized -= OnScreenResized;
         }
         
-        public void Reset()
+        public override void Reset()
         {
             _screenSize = _screenService.CurrentSize;
             ResetScore();
         }
 
-        public void Update()
+        public override void Update()
         {
             _currentBallPosition = _ballSystem.View.transform.position;
 

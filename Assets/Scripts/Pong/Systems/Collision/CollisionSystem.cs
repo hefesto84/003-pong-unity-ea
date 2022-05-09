@@ -3,7 +3,7 @@ using Pong.Systems.Paddle.Base;
 
 namespace Pong.Systems.Collision
 {
-    public class CollisionSystem
+    public class CollisionSystem : Base.System
     {
         private readonly BallSystem _ballSystem;
         private readonly PaddleSystem _playerPaddleSystem;
@@ -16,7 +16,12 @@ namespace Pong.Systems.Collision
             _opponentPaddleSystem = opponentPaddleSystem;
         }
 
-        public void Update()
+        public override void Reset()
+        {
+            
+        }
+
+        public override void Update()
         {
             if (_ballSystem.View.Bounds.Intersects(_playerPaddleSystem.View.Bounds))
             {

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Pong.Systems.Ball
 {
     /* TODO: remove dependency of OnScreenResized */
-    public class BallSystem
+    public class BallSystem : Base.System
     {
         private readonly ConfigService _configService;
         private readonly ScreenService _screenService;
@@ -30,7 +30,7 @@ namespace Pong.Systems.Ball
             _screenService.OnScreenResized -= OnScreenResized;
         }
         
-        public void Reset()
+        public override void Reset()
         {
             SetupBallView();
             
@@ -47,7 +47,7 @@ namespace Pong.Systems.Ball
             _view.Init(_configService.PongConfig);
         }
         
-        public void Update()
+        public override void Update()
         {
             var dt = Time.deltaTime;
             var ct = _view.transform;

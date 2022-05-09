@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fee56beb3b4f82bbba3fba3dd2009b, type: 3}
   m_Name: PongConfig
   m_EditorClassIdentifier: 
-  paddleMovementSpeed: 10
-  initialBallSpeed: 5
+  paddleMovementSpeed: 20
+  initialBallSpeed: 15
   victoryPoints: 1
   playerPaddleSprite: {fileID: 1600142426, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
   opponentPlayerSprite: {fileID: 2037879689, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}

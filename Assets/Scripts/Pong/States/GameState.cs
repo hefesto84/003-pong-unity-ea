@@ -1,4 +1,5 @@
-﻿using Pong.Configurations;
+﻿using System.Collections.Generic;
+using Pong.Configurations;
 using Pong.Managers;
 using Pong.Services;
 using Pong.States.Base;
@@ -23,6 +24,8 @@ namespace Pong.States
         private bool IsPlaying { get; set; }
         private bool IsPaused { get; set; }
 
+        private List<Systems.Base.System> _systems;
+        
         public GameState(
             ConfigService configService, 
             ScreenService screenService, 
@@ -39,6 +42,15 @@ namespace Pong.States
             _opponentPaddleSystem = opponentPaddleSystem as OpponentPaddleSystem;
             _collisionSystem = collisionSystem;
             _gameSystem = gameSystem;
+
+            _systems = new List<Systems.Base.System>
+            {
+                _ballSystem,
+                _playerPaddleSystem,
+                _opponentPaddleSystem,
+                _collisionSystem,
+                _gameSystem
+            };
         }
         
         public override void DoState()
@@ -73,14 +85,7 @@ namespace Pong.States
 
         private void UpdateSystems()
         {
-            _ballSystem.Update();
-
-            _playerPaddleSystem.Update();
-            _opponentPaddleSystem.Update();
-
-            _collisionSystem.Update();
-
-            _gameSystem.Update();
+            foreach (var system in _systems) system.Update();
         }
         
         private void CheckMatchConditions()
@@ -96,10 +101,7 @@ namespace Pong.States
 
         private void InitDependencies()
         {
-            _ballSystem.Reset();    
-            _playerPaddleSystem.Reset();
-            _opponentPaddleSystem.Reset();
-            _gameSystem.Reset();
+            foreach (var system in _systems) system.Reset();
         }
         
         private void ShowDependencies()

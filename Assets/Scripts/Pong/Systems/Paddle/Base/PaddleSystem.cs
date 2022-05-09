@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Pong.Systems.Paddle.Base
 {
-    public abstract class PaddleSystem
+    public abstract class PaddleSystem : Systems.Base.System
     {
         public PaddleView View { get; private set; }
         public PlayerType PlayerType { get; private set; }
@@ -17,7 +17,6 @@ namespace Pong.Systems.Paddle.Base
         
         protected readonly float PaddleMovementSpeed;
         
-
         protected PaddleSystem(ConfigService configService, ScreenService screenService, BallSystem ballSystem, PlayerType playerType)
         {
             _configService = configService;
@@ -31,10 +30,7 @@ namespace Pong.Systems.Paddle.Base
 
             ScreenSize = _screenService.CurrentSize;
         }
- 
-        public virtual void Update(){}
-        public virtual void Reset(){}
-        
+
         public void CheckCollision()
         {
             if (BallSystem.View.Bounds.Intersects(View.Bounds))
