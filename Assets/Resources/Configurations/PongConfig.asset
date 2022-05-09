@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fee56beb3b4f82bbba3fba3dd2009b, type: 3}
   m_Name: PongConfig
   m_EditorClassIdentifier: 
+  isAIEnabled: 1
   paddleMovementSpeed: 20
   initialBallSpeed: 15
   victoryPoints: 5

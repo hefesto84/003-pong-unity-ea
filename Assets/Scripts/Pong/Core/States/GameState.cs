@@ -7,6 +7,7 @@ using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle;
 using Pong.Core.Systems.Paddle.Base;
+using Pong.UI.Systems;
 using UnityEngine;
 
 namespace Pong.Core.States
@@ -18,6 +19,7 @@ namespace Pong.Core.States
         private readonly OpponentPaddleSystem _opponentPaddleSystem;
         private readonly CollisionSystem _collisionSystem;
         private readonly GameSystem _gameSystem;
+        private readonly UISystem _uiSystem;
         private readonly PongConfig _pongConfig;
         
         private bool IsPlaying { get; set; }
@@ -31,6 +33,7 @@ namespace Pong.Core.States
             PaddleSystem opponentPaddleSystem,
             CollisionSystem collisionSystem,
             GameSystem gameSystem,
+            UISystem uiSystem,
             GameManager gameManager) : base(gameManager)
         {
             _pongConfig = configService.PongConfig;
@@ -39,8 +42,14 @@ namespace Pong.Core.States
             _opponentPaddleSystem = opponentPaddleSystem as OpponentPaddleSystem;
             _collisionSystem = collisionSystem;
             _gameSystem = gameSystem;
+            _uiSystem = uiSystem;
         }
-        
+
+        public override void Start()
+        {
+            Debug.Log(GetType());
+        }
+
         public override void DoState()
         {
             switch (IsPlaying)
@@ -49,7 +58,6 @@ namespace Pong.Core.States
                     ProcessState();
                     return;
                 case false:
-                    ShowDependencies();
                     InitDependencies();
                     IsPlaying = true;
                     IsPaused = false;
@@ -78,6 +86,7 @@ namespace Pong.Core.States
             _opponentPaddleSystem.Update();
             _collisionSystem.Update();
             _gameSystem.Update();
+            _uiSystem.Update();
         }
         
         private void CheckMatchConditions()
@@ -89,7 +98,7 @@ namespace Pong.Core.States
             IsPaused = false;
             IsPlaying = false;
         }
-
+        
         private void InitDependencies()
         {
             _ballSystem.Reset();
@@ -97,11 +106,6 @@ namespace Pong.Core.States
             _opponentPaddleSystem.Reset();
             _collisionSystem.Reset();
             _gameSystem.Reset();
-        }
-        
-        private void ShowDependencies()
-        {
-            Debug.Log($"Game: {_pongConfig.victoryPoints}, {_pongConfig.initialBallSpeed}, {_pongConfig.paddleMovementSpeed}");
         }
     }
 }

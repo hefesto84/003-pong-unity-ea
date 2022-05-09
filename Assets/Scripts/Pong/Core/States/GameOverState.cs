@@ -8,12 +8,14 @@ namespace Pong.Core.States
     {
         public GameOverState(GameManager gameManager) : base(gameManager) { }
 
+        public override void Start()
+        {
+            Debug.Log("GAME OVER");
+        }
+
         public override void DoState()
         {
-            //Debug.Log("GAME OVER");
-            
             ProcessState();
-            //GameManager.SetState(GameManager.GameState);
         }
 
         private void ProcessState()

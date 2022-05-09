@@ -53,12 +53,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/Base/State.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/GameOverState.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/GameState.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/InitGameState.cs">
           <value>
             <set />
           </value>
@@ -313,6 +323,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Controllers/UIController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Systems/UISystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/UIGameOverView.cs">
           <value>
             <set />
@@ -324,6 +344,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/UIScoreView.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/UIView.cs">
           <value>
             <set />
           </value>

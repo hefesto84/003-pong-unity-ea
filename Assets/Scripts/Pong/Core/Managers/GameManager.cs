@@ -5,6 +5,7 @@ using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle.Base;
+using Pong.UI.Systems;
 using UnityEngine;
 
 namespace Pong.Core.Managers
@@ -27,6 +28,7 @@ namespace Pong.Core.Managers
         private PaddleSystem _opponentPaddleSystem;
         private CollisionSystem _collisionSystem;
         private GameSystem _gameSystem;
+        private UISystem _uiSystem;
         
         public void Init(ConfigService configService, 
             ScreenService screenService, 
@@ -34,7 +36,8 @@ namespace Pong.Core.Managers
             PaddleSystem playerPaddleSystem, 
             PaddleSystem opponentPaddleSystem,
             CollisionSystem collisionSystem,
-            GameSystem gameSystem)
+            GameSystem gameSystem,
+            UISystem uiSystem)
         {
             _configService = configService;
             _screenService = screenService;
@@ -44,13 +47,18 @@ namespace Pong.Core.Managers
             _opponentPaddleSystem = opponentPaddleSystem;
             _collisionSystem = collisionSystem;
             _gameSystem = gameSystem;
+            _uiSystem = uiSystem;
 
             SetDependencies();
         }
         
         public void SetState(State state)
         {
+            _currentState.Stop();
             _currentState = state;
+            _currentState.Start();
+            
+            _uiSystem.SetState(state);
         }
         
         private void Update()
@@ -62,9 +70,9 @@ namespace Pong.Core.Managers
 
         private void SetDependencies()
         {
-            InitGameState = new InitGameState(this);
+            InitGameState = new InitGameState(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, _uiSystem, this);
             
-            GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, this);
+            GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, _uiSystem, this);
 
             GameOverState = new GameOverState(this);
             

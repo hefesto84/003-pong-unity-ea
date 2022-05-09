@@ -6,6 +6,7 @@ using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle;
+using Pong.UI.Systems;
 using Pong.UI.Views;
 using UnityEngine;
 
@@ -14,8 +15,8 @@ namespace Pong
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private PongConfig pongConfig;
-        [SerializeField] private UIScoreView scoreView;
-        [SerializeField] private UIGameResultView gameResultView;
+        //[SerializeField] private UIScoreView scoreView;
+        //[SerializeField] private UIGameResultView gameResultView;
         
         private GameManager _gameManager;
         
@@ -24,6 +25,7 @@ namespace Pong
         private OpponentPaddleSystem _opponentPaddleSystem;
         private CollisionSystem _collisionSystem;
         private GameSystem _gameSystem;
+        private UISystem _uiSystem;
 
         private ConfigService _configService;
         private ScreenService _screenService;
@@ -40,9 +42,6 @@ namespace Pong
             // Initialisation of the systems
             InitSystems();
 
-            // Initialisation of the UI
-            InitUI();
-            
             // Initialisation of the GameManager
             _gameManager.Init(
                 _configService, 
@@ -51,7 +50,8 @@ namespace Pong
                 _playerPaddleSystem, 
                 _opponentPaddleSystem, 
                 _collisionSystem, 
-                _gameSystem);
+                _gameSystem,
+                _uiSystem);
         }
 
         private void InitServices()
@@ -75,20 +75,16 @@ namespace Pong
             _opponentPaddleSystem = new OpponentPaddleSystem(_configService, _screenService, _ballSystem);
             _collisionSystem = new CollisionSystem(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem);
             _gameSystem = new GameSystem(_configService, _screenService, _scoreService, _ballSystem);
+            _uiSystem = new UISystem();
         }
 
-        private void InitUI()
-        {
-            scoreView.Init(_scoreService);
-            gameResultView.Init(_scoreService);
-        }
-        
         private void OnDestroy()
         {
             _ballSystem = null;
             _playerPaddleSystem = null;
             _opponentPaddleSystem = null;
             _collisionSystem = null;
+            _uiSystem = null;
         }
     }
 }
