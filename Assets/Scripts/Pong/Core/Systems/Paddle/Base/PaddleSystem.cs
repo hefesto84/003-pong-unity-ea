@@ -32,6 +32,8 @@ namespace Pong.Core.Systems.Paddle.Base
             PaddleMovementSpeed = ConfigService.PongConfig.paddleMovementSpeed;
 
             ScreenSize = _screenService.CurrentSize;
+            
+            SetupView();
         }
 
         public override void Update()

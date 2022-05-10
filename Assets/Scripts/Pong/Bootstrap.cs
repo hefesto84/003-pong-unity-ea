@@ -7,6 +7,7 @@ using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle;
 using Pong.UI.Controllers;
 using Pong.UI.Systems;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Pong
@@ -16,10 +17,7 @@ namespace Pong
         [SerializeField] private PongConfig pongConfig;
 
         [SerializeField] private Transform canvas;
-        
-        //[SerializeField] private UIScoreView scoreView;
-        //[SerializeField] private UIGameResultView gameResultView;
-        
+
         private GameManager _gameManager;
         
         private BallSystem _ballSystem;
@@ -63,11 +61,7 @@ namespace Pong
 
         private void BuildControllers()
         {
-            _uiController = new GameObject("UIController").AddComponent<UIController>();
-
-            var ut = _uiController.transform;
-            ut.SetParent(canvas);
-            ut.localScale = Vector3.one;
+            _uiController = canvas.AddComponent<UIController>();
         }
         
         private void InitServices()

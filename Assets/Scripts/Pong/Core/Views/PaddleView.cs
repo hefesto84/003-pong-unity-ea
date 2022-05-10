@@ -1,4 +1,5 @@
-﻿using Pong.Core.Enums;
+﻿using System;
+using Pong.Core.Enums;
 using Pong.Core.Services;
 using Pong.Core.Views.Base;
 using UnityEngine;
@@ -30,6 +31,13 @@ namespace Pong.Core.Views
         {
             var pt = transform.position;
             pt.x = _playerType == PlayerType.Player ? -screenSize.x + Bounds.size.x*2 : screenSize.x - Bounds.size.x*2;
+            UpdateView(pt);
+        }
+
+        public void Reset()
+        {
+            var pt = transform.position;
+            pt.y = 0;
             UpdateView(pt);
         }
 

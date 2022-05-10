@@ -28,7 +28,7 @@ namespace Pong.Core.Systems.Paddle
 
         public override void Reset()
         {
-            SetupView();
+            View.Reset();
         }
     }
 }
