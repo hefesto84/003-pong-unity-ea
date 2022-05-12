@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fee56beb3b4f82bbba3fba3dd2009b, type: 3}
+  m_Name: PongConfig
+  m_EditorClassIdentifier: 
+  isAIEnabled: 1
+  difficultyConfig: {fileID: 11400000, guid: 2fe8f4879ba774d4cb104729ab07dc1d, type: 2}
+  assetsConfig: {fileID: 11400000, guid: 42fbb801721b7744caa141c0b3ba4875, type: 2}
+  scoreView: {fileID: 2143423037113932690, guid: bef412dfa56840c4fa0f98827fdbe426, type: 3}
+  resultView: {fileID: 521869680638836696, guid: b59d529412192e04cb4da94893328135, type: 3}
+  separatorsView: {fileID: 3045106702523898982, guid: 49d7766456a3a764997d6bfb3bab3635, type: 3}
+  soundsConfig: {fileID: 11400000, guid: 7e3fd2ad48fe9c845ac299e995d25d71, type: 2}
