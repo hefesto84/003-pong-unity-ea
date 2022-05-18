@@ -1,17 +1,12 @@
 ﻿using Pong.Core.Factories;
-using Pong.Core.Services;
 using Pong.Core.States;
 using Pong.Core.States.Base;
-using Pong.Core.Systems.Ball;
-using Pong.Core.Systems.Collision;
-using Pong.Core.Systems.Game;
-using Pong.Core.Systems.Paddle.Base;
 using Pong.UI.Systems;
 using UnityEngine;
 
 namespace Pong.Core.Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager
     {
         private State _currentState;
 
@@ -41,7 +36,7 @@ namespace Pong.Core.Managers
             _uiSystem.SetState(state);
         }
         
-        private void Update()
+        public void Update()
         {
             if (!IsReady) return;
             

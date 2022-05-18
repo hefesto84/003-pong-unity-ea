@@ -3,7 +3,6 @@ using Pong.Core.Factories;
 using Pong.Core.Managers;
 using Pong.Core.Services;
 using Pong.Core.States;
-using Pong.Core.States.Base;
 using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
@@ -38,11 +37,10 @@ namespace Pong
 
         private UIController _uiController;
         private StateFactory _stateFactory;
-
+        
         private void Start()
         {
-            _gameManager = new GameObject("GameManager").AddComponent<GameManager>();
-            _gameManager.transform.SetParent(transform);
+            _gameManager = new GameManager();
             
             // Initialisation of the utilities
             InitUtilities();
@@ -61,6 +59,11 @@ namespace Pong
             
             // Initialisation of the GameManager
             _gameManager.Init(_stateFactory, _uiSystem);
+        }
+
+        private void Update()
+        {
+            _gameManager.Update();
         }
 
         private void InitFactories()
