@@ -4,7 +4,7 @@ using Pong.UI.Views.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Pong.UI.Views
+namespace Pong.UI.Views.Separator
 {
     public class SeparatorView : UIView
     {

@@ -1,6 +1,9 @@
 ﻿using Pong.Core.Services;
 using Pong.Core.States.Base;
 using Pong.UI.Views.Base;
+using Pong.UI.Views.GameResult;
+using Pong.UI.Views.Score;
+using Pong.UI.Views.Separator;
 using UnityEngine;
 
 namespace Pong.UI.Views

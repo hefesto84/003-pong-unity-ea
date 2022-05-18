@@ -4,7 +4,7 @@ using Pong.UI.Views.Base;
 using TMPro;
 using UnityEngine;
 
-namespace Pong.UI.Views
+namespace Pong.UI.Views.GameResult
 {
     public class GameResultView : UIView
     {

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using Pong.Core.Configurations;
 using Pong.Core.Enums;
 using Pong.Core.Services;
 using Pong.UI.Views.Base;
 using TMPro;
 using UnityEngine;
 
-namespace Pong.UI.Views
+namespace Pong.UI.Views.Score
 {
     [RequireComponent(typeof(AudioSource))]
     public class ScoreView : UIView
