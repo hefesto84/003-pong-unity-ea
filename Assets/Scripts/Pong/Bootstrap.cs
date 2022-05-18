@@ -10,7 +10,6 @@ using Pong.Core.Systems.Paddle;
 using Pong.Core.Utils;
 using Pong.UI.Controllers;
 using Pong.UI.Systems;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Pong
@@ -83,7 +82,7 @@ namespace Pong
 
         private void BuildControllers()
         {
-            _uiController = canvas.AddComponent<UIController>();
+            _uiController = canvas.gameObject.AddComponent<UIController>();
         }
         
         private void InitServices()
