@@ -1,6 +1,7 @@
 ﻿using System;
 using Pong.Core.Enums;
 using Pong.Core.Services;
+using Pong.Core.Utils;
 using Pong.Core.Views;
 using Pong.Core.Views.Base;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Pong.Core.Systems.Ball
     /* TODO: remove dependency of OnScreenResized */
     public class BallSystem : Base.System
     {
+        private readonly Utilities _utilities;
         private readonly ConfigService _configService;
         private readonly ScreenService _screenService;
         private readonly ScoreService _scoreService;
@@ -26,10 +28,9 @@ namespace Pong.Core.Systems.Ball
 
         public View View => _view;
 
-        private int InitialDirection => Random.Range(0, 2) * 2 - 1;
-
-        public BallSystem(ConfigService configService, ScoreService scoreService, ScreenService screenService)
+        public BallSystem(ConfigService configService, ScoreService scoreService, ScreenService screenService, Utilities utilities)
         {
+            _utilities = utilities;
             _configService = configService;
             _scoreService = scoreService;
             _screenService = screenService;
@@ -67,21 +68,21 @@ namespace Pong.Core.Systems.Ball
             {
                 return new[]
                 {
-                    Random.Range(0, 2) * 2 - 1,
-                    Random.Range(0, 2) * 2 - 1
+                    _utilities.GetRandomNormalized,
+                    _utilities.GetRandomNormalized
                 };
             }
 
             return new[]
             {
                 _scoreService.LastPlayerScored == PlayerType.Player ? 1 : -1,
-                Random.Range(0, 2) * 2 - 1
+                _utilities.GetRandomNormalized
             };
         }
         
         private void SetupBallView()
         {
-            if (_view == null) _view = new GameObject("Ball").AddComponent<BallView>();
+            if (_view == null) _view = new GameObject(GetType().FullName).AddComponent<BallView>();
             _view.transform.position = Vector3.zero;
             _view.Init(_configService.PongConfig);
         }

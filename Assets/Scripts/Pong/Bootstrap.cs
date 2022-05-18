@@ -5,6 +5,7 @@ using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
 using Pong.Core.Systems.Paddle;
+using Pong.Core.Utils;
 using Pong.UI.Controllers;
 using Pong.UI.Systems;
 using Unity.VisualScripting;
@@ -18,6 +19,7 @@ namespace Pong
 
         [SerializeField] private Transform canvas;
 
+        private Utilities _utilities;
         private GameManager _gameManager;
         
         private BallSystem _ballSystem;
@@ -37,6 +39,9 @@ namespace Pong
         {
             _gameManager = new GameObject("GameManager").AddComponent<GameManager>();
             _gameManager.transform.SetParent(transform);
+            
+            // Initialisation of the utilities
+            InitUtilities();
             
             // Initialisation of the services
             InitServices();
@@ -59,6 +64,11 @@ namespace Pong
                 _uiSystem);
         }
 
+        private void InitUtilities()
+        {
+            _utilities = new Utilities();
+        }
+
         private void BuildControllers()
         {
             _uiController = canvas.AddComponent<UIController>();
@@ -79,7 +89,7 @@ namespace Pong
 
         private void BuildSystems()
         {
-            _ballSystem = new BallSystem(_configService, _scoreService, _screenService);
+            _ballSystem = new BallSystem(_configService, _scoreService, _screenService, _utilities);
             _playerPaddleSystem = new PlayerPaddleSystem(_configService, _screenService, _ballSystem);
             _opponentPaddleSystem = new OpponentPaddleSystem(_configService, _screenService, _ballSystem);
             _collisionSystem = new CollisionSystem(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem);
@@ -94,6 +104,8 @@ namespace Pong
             _opponentPaddleSystem = null;
             _collisionSystem = null;
             _uiSystem = null;
+            _configService = null;
+            _scoreService = null;
         }
     }
 }

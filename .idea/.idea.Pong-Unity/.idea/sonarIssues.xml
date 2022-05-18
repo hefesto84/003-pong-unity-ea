@@ -18,6 +18,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Ball/BallSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Paddle/Base/PaddleSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Utils/Utilities.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
