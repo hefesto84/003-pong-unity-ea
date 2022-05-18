@@ -58,7 +58,10 @@ namespace Pong.Core.Systems.Game
         {
             _currentBallPosition = _ballSystem.View.transform.position;
 
-            if (!(_currentBallPosition.x < -_screenSize.x) && !(_currentBallPosition.x > _screenSize.x)) return;
+            if (!(_currentBallPosition.x < -_screenSize.x) && !(_currentBallPosition.x > _screenSize.x))
+            {
+                return;
+            }
 
             var playerScoreFrom = _currentBallPosition.x < -_screenSize.x ? PlayerType.Opponent : PlayerType.Player;
             

@@ -23,7 +23,10 @@ namespace Pong.Core.Systems.Paddle
 
             ct.y = BallSystem.View.transform.position.y;
 
-            if (ct.y > ScreenSize.y - Bounds.size.y*0.5f || ct.y < -ScreenSize.y + Bounds.size.y*0.5f) return;
+            if (ct.y > ScreenSize.y - Bounds.size.y * 0.5f || ct.y < -ScreenSize.y + Bounds.size.y * 0.5f)
+            {
+                return;
+            }
 
             View.UpdateView(ct.y, ReactionTime);
         }

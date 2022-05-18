@@ -88,8 +88,8 @@ namespace DG.Tweening
             public static void SetOrientationOnPath(PathOptions options, Tween t, Quaternion newRot, Transform trans)
             {
 #if true // PHYSICS_MARKER
-                if (options.isRigidbody) ((Rigidbody)t.target).rotation = newRot;
-                else trans.rotation = newRot;
+                if (options.isRigidbody){ ((Rigidbody)t.target).rotation = newRot;}
+                else{ trans.rotation = newRot;}
 #else
                 trans.rotation = newRot;
 #endif

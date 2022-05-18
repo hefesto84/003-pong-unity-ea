@@ -65,7 +65,10 @@ namespace Pong.Core.States
                 IsPaused = !IsPaused;
             }
 
-            if (IsPaused) return;
+            if (IsPaused)
+            {
+                return;
+            }
             
             UpdateSystems();
 
@@ -84,7 +87,10 @@ namespace Pong.Core.States
         
         private void CheckMatchConditions()
         {
-            if (!_gameSystem.IsGameOver) return;
+            if (!_gameSystem.IsGameOver)
+            {
+                return;
+            }
             
             GameManager.SetState(GameManager.GameOverState);
             

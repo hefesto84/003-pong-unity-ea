@@ -25,9 +25,16 @@ namespace Pong.Core.Services
             LastPlayerScored = lastPlayerScored;
            
             OnScoreUpdated?.Invoke(score);
-            
-            if(score[PlayerType.Player] == _configService.PongConfig.difficultyConfig.victoryPoints) OnPlayerWins?.Invoke(PlayerType.Player);
-            if(score[PlayerType.Opponent] == _configService.PongConfig.difficultyConfig.victoryPoints) OnPlayerWins?.Invoke(PlayerType.Opponent);
+
+            if (score[PlayerType.Player] == _configService.PongConfig.difficultyConfig.victoryPoints)
+            {
+                OnPlayerWins?.Invoke(PlayerType.Player);
+            }
+
+            if (score[PlayerType.Opponent] == _configService.PongConfig.difficultyConfig.victoryPoints)
+            {
+                OnPlayerWins?.Invoke(PlayerType.Opponent);
+            }
         }
     }
 }

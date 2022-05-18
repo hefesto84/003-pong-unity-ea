@@ -1,3 +1,4 @@
+using System;
 using Pong.Core.Configurations;
 using Pong.Core.Enums;
 using Pong.Core.Views.Base;
@@ -14,7 +15,10 @@ namespace Pong.Core.Views
 
         public void Init(PongConfig pongConfig)
         {
-            if (IsViewInitialized) return;
+            if (IsViewInitialized)
+            {
+                return;
+            }
             
             SpriteRenderer.sprite = pongConfig.assetsConfig.ballSprite;
 
@@ -40,6 +44,10 @@ namespace Pong.Core.Views
                 case SoundType.Paddle:
                     _audioSource.clip = _pongConfig.soundsConfig.hitPaddle;
                     break;
+                case SoundType.Result:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null);
             }
             
             _audioSource.Play();

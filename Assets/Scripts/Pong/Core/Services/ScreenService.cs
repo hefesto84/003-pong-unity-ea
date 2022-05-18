@@ -24,7 +24,10 @@ namespace Pong.Core.Services
 
         private void Update()
         {
-            if (_currentScreenHeight == Screen.height && _currentScreenWidth == Screen.width) return;
+            if (_currentScreenHeight == Screen.height && _currentScreenWidth == Screen.width)
+            {
+                return;
+            }
             
             _currentScreenWidth = Screen.width;
             _currentScreenHeight = Screen.height;

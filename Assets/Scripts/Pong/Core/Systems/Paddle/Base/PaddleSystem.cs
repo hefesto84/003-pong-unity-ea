@@ -40,7 +40,10 @@ namespace Pong.Core.Systems.Paddle.Base
 
         private void SetupView()
         {
-            if (View == null) View = new GameObject(GetType().FullName).AddComponent<PaddleView>();
+            if (View == null)
+            {
+                View = new GameObject(GetType().FullName).AddComponent<PaddleView>();
+            }
             
             View.Init(ConfigService, _screenService, PlayerType);
 

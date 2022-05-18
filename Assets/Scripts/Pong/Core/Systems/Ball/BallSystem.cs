@@ -82,7 +82,10 @@ namespace Pong.Core.Systems.Ball
         
         private void SetupBallView()
         {
-            if (_view == null) _view = new GameObject(GetType().FullName).AddComponent<BallView>();
+            if (_view == null)
+            {
+                _view = new GameObject(GetType().FullName).AddComponent<BallView>();
+            }
             _view.transform.position = Vector3.zero;
             _view.Init(_configService.PongConfig);
         }
