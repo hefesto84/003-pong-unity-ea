@@ -21,11 +21,6 @@ namespace Pong.UI.Systems
             _uiController.Reset();
         }
 
-        public override void Init()
-        {
-            Debug.Log("INITIALIZATION OF UISYSTEM");
-        }
-
         public void SetState(State state)
         {
             _uiController.SetState(state);
