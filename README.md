@@ -1,6 +1,6 @@
 # Pong
 
-[Play here in webgl](http://172.105.67.239/webgl/pong/)
+[Play here in webgl](http://172.105.67.239/webgl/pongv2/)
 
 This game has no physics nor colliders.
 
