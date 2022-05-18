@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/modules.xml
+/contentModel.xml
+/.idea.Pong-Unity.iml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\Dani\Documents\Games\Pong-Unity\.idea\.idea.Pong-Unity\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

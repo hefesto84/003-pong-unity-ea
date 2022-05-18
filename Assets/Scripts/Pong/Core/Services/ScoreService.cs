@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Pong.Core.Services
 {
-    public class ScoreService : MonoBehaviour
+    public class ScoreService
     {
         private ConfigService _configService;
         

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Pong.Core.Services
 {
-    public class ConfigService : MonoBehaviour
+    public class ConfigService
     {
         public PongConfig PongConfig { get; private set; }
 

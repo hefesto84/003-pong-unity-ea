@@ -66,17 +66,15 @@ namespace Pong
         
         private void InitServices()
         {
-            _configService = new GameObject("ConfigService").AddComponent<ConfigService>();
+            _configService = new ConfigService();
+            _scoreService = new ScoreService();
             _screenService = new GameObject("ScreenService").AddComponent<ScreenService>();
-            _scoreService = new GameObject("ScoreService").AddComponent<ScoreService>();
             
             _configService.Init(pongConfig);
             _screenService.Init(Camera.main);
             _scoreService.Init(_configService);
             
-            _configService.transform.SetParent(transform);
             _screenService.transform.SetParent(transform);
-            _scoreService.transform.SetParent(transform);
         }
 
         private void BuildSystems()
