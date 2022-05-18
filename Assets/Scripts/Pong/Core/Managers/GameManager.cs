@@ -1,4 +1,5 @@
-﻿using Pong.Core.Services;
+﻿using Pong.Core.Factories;
+using Pong.Core.Services;
 using Pong.Core.States;
 using Pong.Core.States.Base;
 using Pong.Core.Systems.Ball;
@@ -20,35 +21,14 @@ namespace Pong.Core.Managers
 
         private bool IsReady { get; set; }
 
-        private ConfigService _configService;
-        private ScreenService _screenService;
-
-        private BallSystem _ballSystem;
-        private PaddleSystem _playerPaddleSystem;
-        private PaddleSystem _opponentPaddleSystem;
-        private CollisionSystem _collisionSystem;
-        private GameSystem _gameSystem;
         private UISystem _uiSystem;
-        
-        public void Init(ConfigService configService, 
-            ScreenService screenService, 
-            BallSystem ballSystem, 
-            PaddleSystem playerPaddleSystem, 
-            PaddleSystem opponentPaddleSystem,
-            CollisionSystem collisionSystem,
-            GameSystem gameSystem,
-            UISystem uiSystem)
+        private StateFactory _stateFactory;
+
+        public void Init(StateFactory stateFactory, UISystem uiSystem)
         {
-            _configService = configService;
-            _screenService = screenService;
-
-            _ballSystem = ballSystem;
-            _playerPaddleSystem = playerPaddleSystem;
-            _opponentPaddleSystem = opponentPaddleSystem;
-            _collisionSystem = collisionSystem;
-            _gameSystem = gameSystem;
             _uiSystem = uiSystem;
-
+            _stateFactory = stateFactory;
+            
             CreateStatesAndSetDependencies();
         }
         
@@ -70,12 +50,10 @@ namespace Pong.Core.Managers
 
         private void CreateStatesAndSetDependencies()
         {
-            InitGameState = new InitGameState(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, _uiSystem, this);
-            
-            GameState = new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, _uiSystem, this);
+            InitGameState = _stateFactory.Get(StateType.InitGameState) as InitGameState;
+            GameState = _stateFactory.Get(StateType.GameState) as GameState;
+            GameOverState = _stateFactory.Get(StateType.GameOverState) as GameOverState;
 
-            GameOverState = new GameOverState(this);
-            
             SetState(InitGameState);
             
             IsReady = true;

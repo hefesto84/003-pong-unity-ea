@@ -1,6 +1,9 @@
 using Pong.Core.Configurations;
+using Pong.Core.Factories;
 using Pong.Core.Managers;
 using Pong.Core.Services;
+using Pong.Core.States;
+using Pong.Core.States.Base;
 using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
@@ -34,6 +37,7 @@ namespace Pong
         private ScoreService _scoreService;
 
         private UIController _uiController;
+        private StateFactory _stateFactory;
 
         private void Start()
         {
@@ -52,18 +56,23 @@ namespace Pong
             // Build systems
             BuildSystems();
 
+            // Initialization of factories
+            InitFactories();
+            
             // Initialisation of the GameManager
-            _gameManager.Init(
-                _configService, 
-                _screenService, 
-                _ballSystem, 
-                _playerPaddleSystem, 
-                _opponentPaddleSystem, 
-                _collisionSystem, 
-                _gameSystem,
-                _uiSystem);
+            _gameManager.Init(_stateFactory, _uiSystem);
         }
 
+        private void InitFactories()
+        {
+            _stateFactory = new StateFactory();
+            _stateFactory.Init();
+            
+            _stateFactory.RegisterState(new InitGameState(_ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, _uiSystem, _gameManager));
+            _stateFactory.RegisterState(new GameState(_configService, _screenService, _ballSystem, _playerPaddleSystem, _opponentPaddleSystem, _collisionSystem, _gameSystem, _uiSystem, _gameManager));
+            _stateFactory.RegisterState(new GameOverState(_gameManager));
+        }
+        
         private void InitUtilities()
         {
             _utilities = new Utilities();
@@ -106,6 +115,7 @@ namespace Pong
             _uiSystem = null;
             _configService = null;
             _scoreService = null;
+            _stateFactory = null;
         }
     }
 }
