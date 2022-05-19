@@ -60,7 +60,7 @@ namespace Pong.Core.States
             _gameSystem.Reset();
             _uiSystem.Reset();
             
-            GameManager.SetState(GameManager.GameState);
+            GameManager.SetState(GameManager.StateFactory.Get(StateType.GameState));
         }
     }
 }

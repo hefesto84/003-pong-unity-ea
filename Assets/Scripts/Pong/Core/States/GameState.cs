@@ -92,7 +92,7 @@ namespace Pong.Core.States
                 return;
             }
             
-            GameManager.SetState(GameManager.GameOverState);
+            GameManager.SetState(GameManager.StateFactory.Get(StateType.GameOverState));
             
             IsPaused = false;
             IsPlaying = false;

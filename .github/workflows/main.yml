@@ -1,8 +1,8 @@
 name: Build
 on:
   push:
-    branches:
-      - master
+    paths:
+      - Assets/Scripts/Info.cs
 jobs:
   build:
     name: Build

@@ -17,7 +17,7 @@ namespace Pong.Core.States
         {
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                GameManager.SetState(GameManager.GameState);
+                GameManager.SetState(GameManager.StateFactory.Get(StateType.GameState));
             }
         }
     }

@@ -3,6 +3,7 @@ using Pong.Core.Factories;
 using Pong.Core.Managers;
 using Pong.Core.Services;
 using Pong.Core.States;
+using Pong.Core.States.Base;
 using Pong.Core.Systems.Ball;
 using Pong.Core.Systems.Collision;
 using Pong.Core.Systems.Game;
@@ -51,7 +52,7 @@ namespace Pong
 
             InitFactories();
             
-            _gameManager.Init(_stateFactory, _uiSystem);
+            _gameManager.Init(_stateFactory, _uiSystem, StateType.InitGameState);
         }
 
         private void Update()
@@ -101,7 +102,7 @@ namespace Pong
             _gameSystem = new GameSystem(_configService, _screenService, _scoreService, _ballSystem);
             _uiSystem = new UISystem(_configService, _scoreService, _uiController);
         }
-
+        
         private void OnDestroy()
         {
             _ballSystem = null;

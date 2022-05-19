@@ -3,6 +3,31 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Arkanoid/Bootstrap.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Arkanoid/Core/Factories/StateFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Arkanoid/Core/Managers/GameManager.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Arkanoid/Core/Systems/TilesSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Frozenbullets/Managers/BaseGameManager.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Plugins/DOTween/Modules/DOTweenModuleAudio.cs">
           <value>
             <set />
@@ -14,6 +39,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/FPS.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Info.cs">
           <value>
             <set />
           </value>
@@ -58,12 +88,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/GameOverState.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/GameState.cs">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/InitGameState.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Ball/BallSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Base/System.cs">
           <value>
             <set />
           </value>

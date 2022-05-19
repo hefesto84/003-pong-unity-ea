@@ -2,29 +2,23 @@
 using Pong.Core.States;
 using Pong.Core.States.Base;
 using Pong.UI.Systems;
-using UnityEngine;
 
 namespace Pong.Core.Managers
 {
     public class GameManager
     {
         private State _currentState;
-
-        public GameOverState GameOverState { get; private set; }
-        public InitGameState InitGameState { get; private set; }
-        public GameState GameState { get; private set; }
-
         private bool IsReady { get; set; }
 
         private UISystem _uiSystem;
-        private StateFactory _stateFactory;
+        public StateFactory StateFactory { get; private set; }
 
-        public void Init(StateFactory stateFactory, UISystem uiSystem)
+        public void Init(StateFactory stateFactory, UISystem uiSystem, StateType initialStateType)
         {
             _uiSystem = uiSystem;
-            _stateFactory = stateFactory;
+            StateFactory = stateFactory;
             
-            CreateStatesAndSetDependencies();
+            CreateStatesAndSetDependencies(initialStateType);
         }
         
         public void SetState(State state)
@@ -43,13 +37,9 @@ namespace Pong.Core.Managers
             _currentState?.DoState();
         }
 
-        private void CreateStatesAndSetDependencies()
+        private void CreateStatesAndSetDependencies(StateType initialState)
         {
-            InitGameState = _stateFactory.Get(StateType.InitGameState) as InitGameState;
-            GameState = _stateFactory.Get(StateType.GameState) as GameState;
-            GameOverState = _stateFactory.Get(StateType.GameOverState) as GameOverState;
-
-            SetState(InitGameState);
+            SetState(StateFactory.Get(initialState));
             
             IsReady = true;
         }
