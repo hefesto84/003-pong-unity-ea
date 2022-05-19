@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653c4823e7847bb46b7b1d033a464969, type: 3}
+  m_Name: PongAssetsColor-BW
+  m_EditorClassIdentifier: 
+  playerPaddleSprite: {fileID: 1657732710, guid: e428562f69cb41b439069c7be6634bad, type: 3}
+  opponentPlayerSprite: {fileID: -1360216464, guid: e428562f69cb41b439069c7be6634bad, type: 3}
+  ballSprite: {fileID: -1831655573, guid: e428562f69cb41b439069c7be6634bad, type: 3}
+  separatorSprite: {fileID: -240229800, guid: 176e68ec23fcaee4fbf068e2af914414, type: 3}
+  verticalBarSpriteColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  bottomBarSpriteColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  topBarSpriteColor:
+    serializedVersion: 2
+    rgba: 4294967295
