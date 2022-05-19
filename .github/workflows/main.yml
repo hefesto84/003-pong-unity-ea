@@ -30,7 +30,7 @@ jobs:
          host: ${{ secrets.FTP_SERVER }}
          user: ${{ secrets.FTP_USERNAME }}
          password: ${{ secrets.FTP_PASSWORD }}
-         localDir: "build/"
+         localDir: "build/WebGL/WebGL/"
          remoteDir: "/var/www/html/webgl/pong/"
       - uses: actions/upload-artifact@v2
         with:
