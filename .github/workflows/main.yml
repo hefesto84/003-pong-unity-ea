@@ -25,13 +25,13 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-      #- uses: genietim/ftp-action@releases/v2
-      #  with:
-      #   host: ${{ secrets.FTP_SERVER }}
-      #   user: ${{ secrets.FTP_USERNAME }}
-      #   password: ${{ secrets.FTP_PASSWORD }}
-      #   localDir: "build/"
-      #   remoteDir: "/var/www/html/webgl/pong/"
+      - uses: sebastianpopp/ftp-action@releases/v2
+        with:
+         host: ${{ secrets.FTP_SERVER }}
+         user: ${{ secrets.FTP_USERNAME }}
+         password: ${{ secrets.FTP_PASSWORD }}
+         localDir: "build/"
+         remoteDir: "/var/www/html/webgl/pong/"
       - uses: actions/upload-artifact@v2
         with:
           name: Build
