@@ -41,22 +41,16 @@ namespace Pong
         {
             _gameManager = new GameManager();
             
-            // Initialisation of the utilities
             InitUtilities();
             
-            // Initialisation of the services
             InitServices();
             
-            // Build controllers
             BuildControllers();
             
-            // Build systems
             BuildSystems();
 
-            // Initialization of factories
             InitFactories();
             
-            // Initialisation of the GameManager
             _gameManager.Init(_stateFactory, _uiSystem);
         }
 
