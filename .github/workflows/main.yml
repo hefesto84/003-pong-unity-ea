@@ -25,6 +25,8 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
+      - run: |
+         ls -altrh
       - uses: sebastianpopp/ftp-action@releases/v2
         with:
          host: ${{ secrets.FTP_SERVER }}
