@@ -6,7 +6,7 @@ public class Info : MonoBehaviour
     [SerializeField] private TextMeshProUGUI fpsText;
     [SerializeField] private TextMeshProUGUI versionText;
 
-    [SerializeField] private string version = "v1.0.3";
+    [SerializeField] private string version = "v1.0.4";
     
     private float _dt;
     private float _fps;
