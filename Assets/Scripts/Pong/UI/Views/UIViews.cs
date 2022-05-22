@@ -13,9 +13,9 @@ namespace Pong.UI.Views
         private ConfigService _configService;
         private ScoreService _scoreService;
         
-        private UIView _scoreView;
-        private UIView _gameResultView;
-        private UIView _separatorView;
+        private ScoreView _scoreView;
+        private GameResultView _gameResultView;
+        private SeparatorView _separatorView;
         
         public void Init(ConfigService configService, ScoreService scoreService)
         {

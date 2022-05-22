@@ -16,7 +16,7 @@ namespace Pong.UI.Views.Score
         private ScoreService _scoreService;
         private const string DefaultScoreText = "0 - 0";
         
-        public override void Init(ConfigService configService, ScoreService scoreService)
+        public void Init(ConfigService configService, ScoreService scoreService)
         {
             name = GetType().ToString();
             

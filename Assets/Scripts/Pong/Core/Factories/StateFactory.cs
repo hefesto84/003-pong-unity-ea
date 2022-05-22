@@ -15,22 +15,24 @@ namespace Pong.Core.Factories
 
         public void RegisterState(State state)
         {
-            if (_states.ContainsKey(state.StateType))
-            {
-                return;
-            }
+            // We are using just single operation
+            var result = _states.TryAdd(state.StateType, state);
             
-            _states.Add(state.StateType, state);
+            if (!result)
+            {
+                throw new Exception("Value already registered");
+            }
         }
 
         public State Get(StateType stateType)
         {
-            if (!_states.ContainsKey(stateType))
+            // Using TryGetValue for using a single operation
+            if (!_states.TryGetValue(stateType, out var state))
             {
                 throw new Exception("State not registered.");
             }
 
-            return _states[stateType];
+            return state;
         }
     }
 }

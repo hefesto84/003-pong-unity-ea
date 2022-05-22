@@ -1,3 +1,4 @@
+using System;
 using Pong.Core.Configurations;
 using Pong.Core.Factories;
 using Pong.Core.Managers;
@@ -37,7 +38,7 @@ namespace Pong
 
         private UIController _uiController;
         private StateFactory _stateFactory;
-        
+
         private void Start()
         {
             _gameManager = new GameManager();
@@ -52,9 +53,15 @@ namespace Pong
 
             InitFactories();
             
-            _gameManager.Init(_stateFactory, _uiSystem, StateType.InitGameState);
+            _gameManager.Init(_stateFactory, _uiSystem);
+            _gameManager.SetState(_stateFactory.Get(StateType.InitGameState));
         }
 
+        private double _deltaTime;
+        private double _secondFrame;
+        private double _counter;
+        private TimeSpan _ts;
+        
         private void Update()
         {
             _gameManager.Update();

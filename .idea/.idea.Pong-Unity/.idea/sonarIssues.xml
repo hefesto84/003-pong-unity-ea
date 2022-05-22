@@ -33,6 +33,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Core/Systems/Ball/BallSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Arkanoid-Unity/Assets/Scripts/Frozenbullets/Managers/BaseGameManager.cs">
           <value>
             <set />
@@ -98,6 +103,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/Base/State.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/States/GameOverState.cs">
           <value>
             <set />
@@ -123,6 +133,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Collision/CollisionSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Game/GameSystem.cs">
           <value>
             <set />
@@ -134,6 +149,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Paddle/OpponentPaddleSystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/Core/Systems/Paddle/PlayerPaddleSystem.cs">
           <value>
             <set />
           </value>
@@ -154,6 +174,26 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Systems/UISystem.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/Base/UIView.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/GameResult/GameResultView.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/Score/ScoreView.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/Pong/UI/Views/Separator/SeparatorView.cs">
           <value>
             <set />
           </value>
