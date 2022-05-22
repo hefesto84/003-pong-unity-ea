@@ -57,11 +57,6 @@ namespace Pong
             _gameManager.SetState(_stateFactory.Get(StateType.InitGameState));
         }
 
-        private double _deltaTime;
-        private double _secondFrame;
-        private double _counter;
-        private TimeSpan _ts;
-        
         private void Update()
         {
             _gameManager.Update();
