@@ -14,7 +14,7 @@ namespace Pong.UI.Views.Separator
         [SerializeField] private Image topBar;
         [SerializeField] private Image bottomBar;
         
-        public override void Init(ConfigService configService)
+        public void Init(ConfigService configService)
         {
             _pongConfig = configService.PongConfig;
             name = GetType().ToString();

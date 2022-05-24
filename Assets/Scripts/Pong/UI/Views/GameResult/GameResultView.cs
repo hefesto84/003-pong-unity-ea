@@ -11,7 +11,7 @@ namespace Pong.UI.Views.GameResult
         [SerializeField] private TextMeshProUGUI gameResultText;
         private ScoreService _scoreService;
         
-        public override void Init(ScoreService scoreService)
+        public void Init(ScoreService scoreService)
         {
             name = GetType().ToString();
             _scoreService = scoreService;

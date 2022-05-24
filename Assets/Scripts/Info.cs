@@ -6,14 +6,14 @@ public class Info : MonoBehaviour
     [SerializeField] private TextMeshProUGUI fpsText;
     [SerializeField] private TextMeshProUGUI versionText;
 
-    [SerializeField] private string version = "v1.0.5";
+    private readonly string _version = "v1.0.6";
     
     private float _dt;
     private float _fps;
 
     private void Awake()
     {
-        versionText.text = version;
+        versionText.text = _version;
     }
 
     private void Update()

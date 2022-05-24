@@ -13,12 +13,12 @@ namespace Pong.Core.Managers
         private UISystem _uiSystem;
         public StateFactory StateFactory { get; private set; }
 
-        public void Init(StateFactory stateFactory, UISystem uiSystem, StateType initialStateType)
+        public void Init(StateFactory stateFactory, UISystem uiSystem)
         {
             _uiSystem = uiSystem;
             StateFactory = stateFactory;
             
-            CreateStatesAndSetDependencies(initialStateType);
+            CreateStatesAndSetDependencies();
         }
         
         public void SetState(State state)
@@ -37,10 +37,8 @@ namespace Pong.Core.Managers
             _currentState?.DoState();
         }
 
-        private void CreateStatesAndSetDependencies(StateType initialState)
+        private void CreateStatesAndSetDependencies()
         {
-            SetState(StateFactory.Get(initialState));
-            
             IsReady = true;
         }
     }
