@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PongConfig
   m_EditorClassIdentifier: 
   isAIEnabled: 1
-  difficultyConfig: {fileID: 11400000, guid: 68f60ebf600dc434db0cb4004a4b0580, type: 2}
+  difficultyConfig: {fileID: 11400000, guid: 2fe8f4879ba774d4cb104729ab07dc1d, type: 2}
   assetsConfig: {fileID: 11400000, guid: 42fbb801721b7744caa141c0b3ba4875, type: 2}
   scoreView: {fileID: 2143423037113932690, guid: bef412dfa56840c4fa0f98827fdbe426, type: 3}
   resultView: {fileID: 521869680638836696, guid: b59d529412192e04cb4da94893328135, type: 3}
